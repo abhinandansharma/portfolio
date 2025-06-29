@@ -373,9 +373,6 @@ function App() {
           <p className="text-gray-400">
             © 2024 Abhinandan Sharma. Built with React, TypeScript, and Tailwind CSS.
           </p>
-          <p className="text-gray-500 text-sm mt-2">
-            Favicon created by <a href="https://www.flaticon.com" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">Flaticon</a>
-          </p>
         </div>
       </footer>
     </div>
