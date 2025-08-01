@@ -213,7 +213,7 @@ function App() {
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
                 <img 
-                  src="https://private-user-images.githubusercontent.com/35263182/473581793-3891a115-2316-4ae6-8a11-fbea3a1892ad.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQwNzYxMTIsIm5iZiI6MTc1NDA3NTgxMiwicGF0aCI6Ii8zNTI2MzE4Mi80NzM1ODE3OTMtMzg5MWExMTUtMjMxNi00YWU2LThhMTEtZmJlYTNhMTg5MmFkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODAxVDE5MTY1MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY2MTcwMmQ0NDlkODExYmU0OGQxNzdhOTYzZTE5NmU5M2ViZGI5YmQ5N2E2YzA1Mjk1YzViMzIwOTVmYzUyYTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OaVWD8MhPN6xStkJPqeD6uLn3ga8wOPAqam0s_Rx8dI" 
+                  src="https://github.com/user-attachments/assets/3891a115-2316-4ae6-8a11-fbea3a1892ad"
                   alt="Patatap Clone Preview"
                   className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
                   onError={(e) => {
@@ -406,7 +406,7 @@ function App() {
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
                 <img 
-                  src="https://github.com/user-attachments/assets/7942d58b-e04e-45ad-b070-ac1c56325d54" 
+                  src="https://github.com/user-attachments/assets/5fcef9f9-f0a3-483d-a2b2-7dd0b844bfd5" 
                   alt="Star Coin Preview"
                   className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
                   onError={(e) => {
