@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import ExperienceSection from './ExperienceSection';
 import HaloEffect from './HaloEffect';
+import { FaReact, FaSass, FaGithub, FaAndroid, FaApple, FaFigma } from 'react-icons/fa';
+import { SiNextdotjs, SiTypescript, SiAdobexd, SiGraphql, SiFirebase } from 'react-icons/si';
 
 function App() {
   return (
@@ -40,16 +42,18 @@ function App() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="#contact" 
+              href="#contact"
               className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              Get In Touch
+              Get in Touch
             </a>
             <a 
-              href="#experience" 
+              href="/portfolio/resume.pdf"
+              target='_blank'
+              rel="noopener noreferrer" 
               className="border border-purple-600 text-purple-300 hover:bg-purple-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              View Experience
+              View Resume
             </a>
           </div>
         </div>
@@ -111,88 +115,86 @@ function App() {
           <h2 className="text-4xl font-bold text-white text-center mb-16">Skills & Technologies</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-8 rounded-2xl border border-purple-500/30">
-              <h3 className="text-2xl font-semibold text-white mb-6">Frontend Development</h3>
+              <h3 className="text-2xl font-semibold text-white mb-6">Front-end Development</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">React.js</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaReact className="text-cyan-400" /> React.js</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '95%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Next.js</span>
+                  <span className="text-gray-300 flex items-center gap-2"><SiNextdotjs className="text-white" /> Next.js</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">TypeScript</span>
+                  <span className="text-gray-300 flex items-center gap-2"><SiTypescript className="text-blue-400" /> TypeScript</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">SCSS/SASS</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaSass className="text-pink-400" /> Sass/SCSS</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
                   </div>
                 </div>
               </div>
             </div>
-
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-8 rounded-2xl border border-purple-500/30">
               <h3 className="text-2xl font-semibold text-white mb-6">Mobile Development</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">React Native</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaReact className="text-cyan-400" /> React Native</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">iOS Development</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaApple className="text-gray-200" /> iOS Development</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Android SDK</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaAndroid className="text-green-400" /> Android SDK</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '80%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Mobile UI/UX</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaFigma className="text-pink-400" /> Mobile UI/UX</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '95%'}}></div>
                   </div>
                 </div>
               </div>
             </div>
-
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-8 rounded-2xl border border-purple-500/30">
-              <h3 className="text-2xl font-semibold text-white mb-6">Tools & Others</h3>
+              <h3 className="text-2xl font-semibold text-white mb-6">Other Technologies & Tools</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Adobe XD</span>
+                  <span className="text-gray-300 flex items-center gap-2"><SiAdobexd className="text-pink-400" /> Adobe XD</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">GraphQL</span>
+                  <span className="text-gray-300 flex items-center gap-2"><SiGraphql className="text-pink-500" /> GraphQL</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Firebase</span>
+                  <span className="text-gray-300 flex items-center gap-2"><SiFirebase className="text-yellow-400" /> Firebase</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '80%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Git/GitHub</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaGithub className="text-gray-300" /> Git/GitHub</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '95%'}}></div>
                   </div>
