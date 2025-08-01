@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import ExperienceSection from './ExperienceSection';
 import HaloEffect from './HaloEffect';
-import { FaReact, FaSass, FaGithub, FaAndroid, FaApple, FaFigma } from 'react-icons/fa';
+import { FaReact, FaSass, FaGithub, FaAndroid, FaApple, FaFigma, FaTwitter, FaLinkedinIn, FaInstagram, FaTelegramPlane, FaMediumM, FaCodepen } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiAdobexd, SiGraphql, SiFirebase } from 'react-icons/si';
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
             </p>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
               Experienced in UI/UX designing and Front-end coding. I have a good interest in problem-solving. 
-              I'm always ready to take on a new challenge and always eager to learn cutting-edge technologies.
+              I'm always ready to take on a new challenge and to learn cutting-edge technologies.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -479,7 +479,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="pb-20 pt-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-white mb-16">Get In Touch</h2>
           <div className="bg-black/20 p-8 rounded-2xl border border-white/10">
@@ -509,10 +509,66 @@ function App() {
 
       {/* Footer */}
       <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-black/40 border-t border-white/10">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto justify-between flex flex-col sm:flex-row items-center gap-8">
           <p className="text-gray-400">
             © 2025 Abhinandan Sharma. Built with React, TypeScript, and Tailwind CSS.
           </p>
+          <div className="flex items-center justify-center gap-8">
+              <a
+                href="https://twitter.com/notjustadev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+                aria-label="Twitter"
+              >
+                <FaTwitter className="w-6 h-6" />
+              </a>
+              <a
+                href="https://codepen.io/abhinandansharma"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+                aria-label="CodePen"
+              >
+                <FaCodepen className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/-abhinandan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn className="w-6 h-6" />
+              </a>
+              <a
+                href="https://t.me/abhinandan0659"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+                aria-label="Telegram"
+              >
+                <FaTelegramPlane className="w-6 h-6" />
+              </a>
+              <a
+                href="https://instagram.com/_abhinandansharma"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+                aria-label="Instagram"
+              >
+                <FaInstagram className="w-6 h-6" />
+              </a>
+              <a
+                href="https://medium.com/@abhinandan0659"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+                aria-label="Medium"
+              >
+                <FaMediumM className="w-6 h-6" />
+              </a>
+          </div>
         </div>
       </footer>
     </div>
