@@ -305,22 +305,22 @@ function App() {
               </div>
             </div>
 
-            {/* To-Do App */}
+            {/* TaskMaster Pro */}
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
                 <img 
-                  src="https://user-images.githubusercontent.com/35263182/98703675-c1057800-23a1-11eb-98b7-37b54406b277.PNG" 
-                  alt="To-Do App Preview"
+                  src="https://github.com/user-attachments/assets/7b577324-8f7c-4d18-8a35-b1c465875571" 
+                  alt="TaskMaster Pro Preview"
                   className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}
                 />
-                <h3 className="text-xl font-semibold text-white mb-2">To-Do App</h3>
+                <h3 className="text-xl font-semibold text-white mb-2">TaskMaster Pro</h3>
                 <p className="text-purple-300 text-sm">2020</p>
               </div>
               <p className="text-gray-300 text-sm mb-4">
-                Minimal and functional todo application built with jQuery. Features include add, edit, remove, hide/show, and check/uncheck todos.
+                A modern, feature-rich task management application built with jQuery, featuring dark mode, search, priorities, and real-time statistics.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">jQuery</span>
@@ -329,7 +329,7 @@ function App() {
               </div>
               <div className="flex flex-row justify-between gap-4">
                 <a 
-                  href="https://j-query-to-do-app.vercel.app/" 
+                  href="https://task-master-pro-zeta.vercel.app/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
@@ -340,7 +340,7 @@ function App() {
                   Live Demo
                 </a>
                 <a 
-                  href="https://github.com/abhinandansharma/jQuery-ToDo-App" 
+                  href="https://github.com/abhinandansharma/taskMasterPro" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
