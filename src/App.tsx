@@ -368,7 +368,7 @@ function App() {
                 <p className="text-purple-300 text-sm">2021</p>
               </div>
               <p className="text-gray-300 text-sm mb-4">
-                A full-featured Netflix clone built with React. Features include movie browsing, responsive design, and custom API integration. Deployed on Vercel with 1 star on GitHub.
+                A full-featured Netflix clone built with React. Features include movie browsing, responsive design, and custom API integration. Deployed on Vercel.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">React</span>
