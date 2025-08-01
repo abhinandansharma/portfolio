@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ExperienceSection from './ExperienceSection';
+import HaloEffect from './HaloEffect';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative">
+        <HaloEffect />
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
@@ -76,15 +78,15 @@ function App() {
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  GSOC 2020 Mentor & GSOC 2019 Intern
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Full-Stack Developer (React, React Native, Python)
+                  Full-Stack Developer (MERN Stack)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
                   Open Source Contributor (EOS Design System)
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+                  GSOC 2020 Mentor & GSOC 2019 Intern
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
@@ -207,10 +209,18 @@ function App() {
           <h2 className="text-4xl font-bold text-white text-center mb-16">Featured Projects</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            {/* Patatap Clone */}
+            {/* Patatap */}
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-white mb-2">Patatap Clone</h3>
+                <img 
+                  src="https://private-user-images.githubusercontent.com/35263182/473581793-3891a115-2316-4ae6-8a11-fbea3a1892ad.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQwNzYxMTIsIm5iZiI6MTc1NDA3NTgxMiwicGF0aCI6Ii8zNTI2MzE4Mi80NzM1ODE3OTMtMzg5MWExMTUtMjMxNi00YWU2LThhMTEtZmJlYTNhMTg5MmFkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODAxVDE5MTY1MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY2MTcwMmQ0NDlkODExYmU0OGQxNzdhOTYzZTE5NmU5M2ViZGI5YmQ5N2E2YzA1Mjk1YzViMzIwOTVmYzUyYTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OaVWD8MhPN6xStkJPqeD6uLn3ga8wOPAqam0s_Rx8dI" 
+                  alt="Patatap Clone Preview"
+                  className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <h3 className="text-xl font-semibold text-white mb-2">Patatap</h3>
                 <p className="text-purple-300 text-sm">2020</p>
               </div>
               <p className="text-gray-300 text-sm mb-4">
@@ -221,22 +231,43 @@ function App() {
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">HowlerJS</span>
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">JavaScript</span>
               </div>
-              <a 
-                href="https://github.com/abhinandansharma/patatap" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-purple-300 hover:text-purple-200 text-sm transition-colors"
-              >
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                </svg>
-                View on GitHub
-              </a>
+                            <div className="flex flex-row justify-between gap-4">
+                <a 
+                  href="https://codepen.io/abhinandansharma/pen/abNmPoJ" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 16.5v-9l6 4.5-6 4.5z"/>
+                  </svg>
+                  Live Demo
+                </a>
+                <a 
+                  href="https://github.com/abhinandansharma/patatap" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                  View on GitHub
+                </a>
+              </div>
             </div>
 
             {/* RGB Color Game */}
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
+                <img 
+                  src="https://github.com/user-attachments/assets/cfec28b0-7e63-419d-92bb-f157e7630838" 
+                  alt="RGB Color Game Preview"
+                  className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
                 <h3 className="text-xl font-semibold text-white mb-2">RGB Color Game</h3>
                 <p className="text-purple-300 text-sm">2020</p>
               </div>
@@ -248,22 +279,43 @@ function App() {
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">CSS3</span>
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">HTML5</span>
               </div>
-              <a 
-                href="https://github.com/abhinandansharma/ColorGame" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-purple-300 hover:text-purple-200 text-sm transition-colors"
-              >
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                </svg>
-                View on GitHub
-              </a>
+              <div className="flex flex-row justify-between gap-4">
+                <a 
+                  href="https://codepen.io/abhinandansharma/pen/VweErOz" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 16.5v-9l6 4.5-6 4.5z"/>
+                  </svg>
+                  Live Demo
+                </a>
+                <a 
+                  href="https://github.com/abhinandansharma/ColorGame" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                  View on GitHub
+                </a>
+              </div>
             </div>
 
             {/* To-Do App */}
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
+                <img 
+                  src="https://user-images.githubusercontent.com/35263182/98703675-c1057800-23a1-11eb-98b7-37b54406b277.PNG" 
+                  alt="To-Do App Preview"
+                  className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
                 <h3 className="text-xl font-semibold text-white mb-2">To-Do App</h3>
                 <p className="text-purple-300 text-sm">2020</p>
               </div>
@@ -275,22 +327,92 @@ function App() {
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">CSS3</span>
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">HTML5</span>
               </div>
-              <a 
-                href="https://github.com/abhinandansharma/jQuery-ToDo-App" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-purple-300 hover:text-purple-200 text-sm transition-colors"
-              >
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                </svg>
-                View on GitHub
-              </a>
+              <div className="flex flex-row justify-between gap-4">
+                <a 
+                  href="https://j-query-to-do-app.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 16.5v-9l6 4.5-6 4.5z"/>
+                  </svg>
+                  Live Demo
+                </a>
+                <a 
+                  href="https://github.com/abhinandansharma/jQuery-ToDo-App" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+
+            {/* Netflix Clone */}
+            <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
+              <div className="mb-4">
+                <img 
+                  src="https://user-images.githubusercontent.com/35263182/126314477-936b6acd-84d2-4c6b-b45a-c2678fd934b5.png" 
+                  alt="Netflix Clone Preview"
+                  className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <h3 className="text-xl font-semibold text-white mb-2">Netflix Clone</h3>
+                <p className="text-purple-300 text-sm">2021</p>
+              </div>
+              <p className="text-gray-300 text-sm mb-4">
+                A full-featured Netflix clone built with React. Features include movie browsing, responsive design, and custom API integration. Deployed on Vercel with 1 star on GitHub.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">React</span>
+                <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">JavaScript</span>
+                <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">CSS</span>
+                <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">Vercel</span>
+              </div>
+              <div className="flex flex-row justify-between gap-4">
+                <a 
+                  href="https://netflix-clone-ten-woad.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 16.5v-9l6 4.5-6 4.5z"/>
+                  </svg>
+                  Live Demo
+                </a>
+                <a 
+                  href="https://github.com/abhinandansharma/netflix-clone" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                  View on GitHub
+                </a>
+              </div>
             </div>
 
             {/* Star Coin */}
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
+                <img 
+                  src="https://github.com/user-attachments/assets/7942d58b-e04e-45ad-b070-ac1c56325d54" 
+                  alt="Star Coin Preview"
+                  className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
                 <h3 className="text-xl font-semibold text-white mb-2">Star Coin</h3>
                 <p className="text-purple-300 text-sm">2018</p>
               </div>
@@ -310,6 +432,14 @@ function App() {
             {/* Number Plate Recognition */}
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
+                <img 
+                  src="https://user-images.githubusercontent.com/35263182/98663114-ad8ce980-236e-11eb-98cc-e57ae1f07d94.PNG" 
+                  alt="Number Plate Recognition Preview"
+                  className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
                 <h3 className="text-xl font-semibold text-white mb-2">Number Plate Recognition</h3>
                 <p className="text-purple-300 text-sm">2019</p>
               </div>
@@ -325,7 +455,7 @@ function App() {
                 href="https://github.com/abhinandansharma/number-plate-recognition" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-purple-300 hover:text-purple-200 text-sm transition-colors"
+                className="inline-flex items-center px-3 py-2 bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 hover:text-white text-sm rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400/60"
               >
                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
@@ -371,7 +501,7 @@ function App() {
       <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-black/40 border-t border-white/10">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-gray-400">
-            © 2024 Abhinandan Sharma. Built with React, TypeScript, and Tailwind CSS.
+            © 2025 Abhinandan Sharma. Built with React, TypeScript, and Tailwind CSS.
           </p>
         </div>
       </footer>
