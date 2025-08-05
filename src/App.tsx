@@ -67,14 +67,14 @@ function App() {
             <div>
               <h3 className="text-2xl font-semibold text-purple-300 mb-6">Who I Am</h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I'm Abhinandan Sharma. I build web interfaces that are as functional as they are beautiful. With 4 years of experience 
-                in front-end development, I specialize in React, JavaScript, and turning complex problems into simple, user-friendly solutions. 
-                I'm also an active open-source contributor and have mentored developers through programs like Google Summer of Code. 
+                I'm Abhinandan Sharma. I build web interfaces that are as functional as they are beautiful. 
+                With 4 years of experience in front-end development, I specialize in React, JavaScript, 
+                and turning complex problems into simple, user-friendly solutions.
+                Also an open-source contributor and have mentored developers through programs like Google Summer of Code.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
                 When I'm not coding, I'm usually lost in a side project or trying to figure out how black holes work. I thrive on challenges, 
-                whether it's debugging a stubborn error or learning a new framework in a weekend. 
-                I'm driven by the idea that good design solves problems and I want to keep solving them.
+                whether it's debugging a stubborn error or learning a new framework in a weekend.
               </p>
             </div>
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-8 rounded-2xl border border-purple-500/30">
@@ -82,27 +82,27 @@ function App() {
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Front-End Expert: 4+ years in React, JS, HTML, CSS for responsive apps.
+                  Front-End Expert (4+ yrs mastering React, JS, CSS, HTML)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Full-Stack Skills: Built MERN stack projects like a Netflix clone.
+                  Full-Stack Capable (Built MERN Netflix clone)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Open-Source Contributor: Active in EOS Design System.
+                  Open-Source (EOS Design System contributor)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  GSoC Mentor & Intern: Mentored in 2020, interned in 2019.
+                  GSoC Mentor & Alum (Mentored 2020, interned 2019)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Astronomy Buff: Passionate about space and tech.
+                  Astronomy Buff (Passionate about space and tech)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  BTech in CS: Graduated 2021, focused on clean code.
+                  BTech in Computer Science (Graduated in 2021)
                 </li>
               </ul>
             </div>
