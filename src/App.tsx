@@ -33,11 +33,11 @@ function App() {
               Abhinandan Sharma
             </h1>
             <p className="text-xl md:text-2xl text-purple-300 mb-8">
-              Senior Software Engineer | Turning Complex Medical Workflows into Simple Digital Tools
+              Front-End Developer | Building Web Apps with Passion
             </p>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Experienced in UI/UX designing and Front-end coding. I have a good interest in problem-solving. 
-              I'm always ready to take on a new challenge and to learn cutting-edge technologies.
+              Skilled in React and UI/UX design, I love to create intuitive, responsive apps that delight users.
+              I’m driven by challenges, open-source contributions, and a fascination with the stars.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
