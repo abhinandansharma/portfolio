@@ -510,13 +510,17 @@ function App() {
           </div>
         </div>
       </section>
-
+      
       {/* Footer */}
       <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-black/40 border-t border-white/10">
         <div className="max-w-7xl mx-auto justify-between flex flex-col sm:flex-row items-center gap-8">
           <p className="text-gray-400">
             © 2025 Abhinandan Sharma. Built with React, TypeScript, and Tailwind CSS.
           </p>
+          <div className="flex items-center justify-center gap-6 flex-col sm:flex-row">
+              <iframe src="https://github.com/sponsors/abhinandansharma/button" title="Sponsor abhinandansharma" 
+                      height="32" width="114" className="border-0 rounded-md">
+              </iframe>
           <div className="flex items-center justify-center gap-8">
               <a
                 href="https://github.com/abhinandansharma"
@@ -581,6 +585,7 @@ function App() {
               >
                 <FaMediumM className="w-6 h-6" />
               </a>
+          </div>
           </div>
         </div>
       </footer>
