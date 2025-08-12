@@ -519,11 +519,20 @@ function App() {
           </p>
           <div className="flex items-center justify-center gap-8">
               <a
-                href="https://twitter.com/notjustadev"
+                href="https://github.com/abhinandansharma"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-purple-400 transition-colors"
-                aria-label="Twitter"
+                aria-label="GitHub"
+              >
+                <FaGithub className="w-6 h-6" />
+              </a>
+              <a
+                href="https://x.com/notjustadev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+                aria-label="X"
               >
                 <FaTwitter className="w-6 h-6" />
               </a>
