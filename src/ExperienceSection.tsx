@@ -153,7 +153,7 @@ const ExperienceSection = () => {
         <div className="text-center mt-12">
           <button
             onClick={handleToggle}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+            className="bg-purple-700 hover:bg-purple-900 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
           >
             {showAllExperiences ? 'Show Less' : 'Show 5 More Experiences'}
           </button>
