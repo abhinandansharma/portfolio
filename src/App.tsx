@@ -315,7 +315,7 @@ function App() {
             <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300">
               <div className="mb-4">
                 <img 
-                  src="https://github.com/user-attachments/assets/7b577324-8f7c-4d18-8a35-b1c465875571" 
+                  src="https://github.com/user-attachments/assets/a9b452db-5145-48a8-95f0-65ec965d8504" 
                   alt="TaskMaster Pro Preview"
                   className="w-full h-32 object-cover rounded-lg mb-4 border border-purple-500/30"
                   onError={(e) => {
