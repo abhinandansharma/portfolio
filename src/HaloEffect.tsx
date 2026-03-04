@@ -1,192 +1,159 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useMemo, Suspense } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Environment, Float } from '@react-three/drei';
+import * as THREE from 'three';
 import { useTheme } from './ThemeContext';
 
-const HaloEffect: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { theme } = useTheme();
+const glassMaterial = (isLight: boolean) => ({
+  metalness: 0.15,
+  roughness: 0.05,
+  transmission: 0.9,
+  thickness: 1.2,
+  ior: 1.45,
+  envMapIntensity: isLight ? 1.5 : 2.5,
+  clearcoat: 1,
+  clearcoatRoughness: 0.05,
+  transparent: true,
+  opacity: 0.9,
+  side: THREE.DoubleSide as THREE.Side,
+  attenuationColor: isLight ? '#a78bfa' : '#8b5cf6',
+  attenuationDistance: 2,
+});
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+// Main object — bottom right
+const MainObject = ({ isLight }: { isLight: boolean }) => {
+  const meshRef = useRef<THREE.Mesh>(null);
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationId: number;
-    let cancelled = false;
-
-    // Defer one frame so data-theme attribute is applied before we read CSS vars
-    const startId = requestAnimationFrame(() => {
-      if (cancelled) return;
-
-      // Read CSS custom properties
-      const cs = getComputedStyle(document.documentElement);
-      const v = (name: string) => parseInt(cs.getPropertyValue(name).trim(), 10);
-      const vf = (name: string) => parseFloat(cs.getPropertyValue(name).trim());
-
-      const bgR = v('--canvas-bg-r'), bgG = v('--canvas-bg-g'), bgB = v('--canvas-bg-b');
-      const acR = v('--canvas-accent-r'), acG = v('--canvas-accent-g'), acB = v('--canvas-accent-b');
-      const ac2R = v('--canvas-accent2-r'), ac2G = v('--canvas-accent2-g'), ac2B = v('--canvas-accent2-b');
-      const starR = v('--canvas-star-r'), starG = v('--canvas-star-g'), starB = v('--canvas-star-b');
-      const orbMidR = v('--canvas-orb-mid-r'), orbMidG = v('--canvas-orb-mid-g'), orbMidB = v('--canvas-orb-mid-b');
-      const orbEdgeR = v('--canvas-orb-edge-r'), orbEdgeG = v('--canvas-orb-edge-g'), orbEdgeB = v('--canvas-orb-edge-b');
-      const vigR = v('--canvas-vignette-r'), vigG = v('--canvas-vignette-g'), vigB = v('--canvas-vignette-b');
-      const orbOpacity = vf('--canvas-orb-opacity');
-      const orbPulse = vf('--canvas-orb-pulse');
-      const ribbonOpacityBase = vf('--canvas-ribbon-opacity-base');
-      const starOpacity = vf('--canvas-star-opacity');
-
-      let w = 0;
-      let h = 0;
-
-      const resizeCanvas = () => {
-        const dpr = window.devicePixelRatio || 1;
-        w = canvas.offsetWidth;
-        h = canvas.offsetHeight;
-        canvas.width = w * dpr;
-        canvas.height = h * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      };
-
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
-
-      // Aurora-like ribbons
-      const ribbons = Array.from({ length: 4 }, (_, i) => ({
-        yBase: 0.2 + i * 0.15,
-        amplitude: 30 + Math.random() * 40,
-        frequency: 0.003 + Math.random() * 0.002,
-        speed: 0.4 + Math.random() * 0.4,
-        phase: Math.random() * Math.PI * 2,
-        thickness: 80 + Math.random() * 100,
-        opacity: ribbonOpacityBase + Math.random() * 0.04,
-        hueShift: i * 15,
-      }));
-
-      // Floating orbs
-      const orbs = Array.from({ length: 3 }, () => ({
-        x: 0.2 + Math.random() * 0.6,
-        y: 0.3 + Math.random() * 0.4,
-        radius: 150 + Math.random() * 200,
-        vx: (Math.random() - 0.5) * 0.0002,
-        vy: (Math.random() - 0.5) * 0.00015,
-        phase: Math.random() * Math.PI * 2,
-      }));
-
-      // Star field
-      const stars = Array.from({ length: 60 }, () => ({
-        x: Math.random(),
-        y: Math.random(),
-        size: 0.5 + Math.random() * 1.2,
-        twinkleSpeed: 0.5 + Math.random() * 2,
-        phase: Math.random() * Math.PI * 2,
-      }));
-
-      let time = 0;
-
-      const animate = () => {
-        if (cancelled) return;
-
-        // Clear with the background color
-        ctx.fillStyle = `rgb(${bgR}, ${bgG}, ${bgB})`;
-        ctx.fillRect(0, 0, w, h);
-
-        // Draw large soft orbs (ambient glow)
-        orbs.forEach((orb) => {
-          orb.x += orb.vx;
-          orb.y += orb.vy;
-          if (orb.x < 0.05 || orb.x > 0.95) orb.vx *= -1;
-          if (orb.y < 0.15 || orb.y > 0.85) orb.vy *= -1;
-
-          const cx = orb.x * w;
-          const cy = orb.y * h;
-          const breathe = Math.sin(time * 0.3 + orb.phase) * 20;
-          const r = orb.radius + breathe;
-
-          const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-          const pulse = 0.5 + 0.5 * Math.sin(time * 0.5 + orb.phase);
-          const a = orbOpacity + pulse * orbPulse;
-          grad.addColorStop(0, `rgba(${acR}, ${acG}, ${acB}, ${a})`);
-          grad.addColorStop(0.5, `rgba(${orbMidR}, ${orbMidG}, ${orbMidB}, ${a * 0.4})`);
-          grad.addColorStop(1, `rgba(${orbEdgeR}, ${orbEdgeG}, ${orbEdgeB}, 0)`);
-
-          ctx.beginPath();
-          ctx.arc(cx, cy, r, 0, Math.PI * 2);
-          ctx.fillStyle = grad;
-          ctx.fill();
-        });
-
-        // Draw aurora ribbons
-        ribbons.forEach((ribbon) => {
-          ctx.beginPath();
-
-          const points: [number, number][] = [];
-          for (let x = -20; x <= w + 20; x += 4) {
-            const wave1 = Math.sin(x * ribbon.frequency + time * ribbon.speed + ribbon.phase) * ribbon.amplitude;
-            const wave2 = Math.sin(x * ribbon.frequency * 1.5 + time * ribbon.speed * 0.7) * ribbon.amplitude * 0.5;
-            const y = ribbon.yBase * h + wave1 + wave2;
-            points.push([x, y]);
-          }
-
-          // Draw ribbon with gradient fill
-          const gradient = ctx.createLinearGradient(0, 0, w, 0);
-          gradient.addColorStop(0, `rgba(${acR}, ${acG}, ${acB}, 0)`);
-          gradient.addColorStop(0.2, `rgba(${acR}, ${acG}, ${acB}, ${ribbon.opacity})`);
-          gradient.addColorStop(0.5, `rgba(${ac2R}, ${ac2G}, ${ac2B}, ${ribbon.opacity * 1.5})`);
-          gradient.addColorStop(0.8, `rgba(${acR}, ${acG}, ${acB}, ${ribbon.opacity})`);
-          gradient.addColorStop(1, `rgba(${acR}, ${acG}, ${acB}, 0)`);
-
-          // Top edge
-          ctx.moveTo(points[0][0], points[0][1]);
-          for (let i = 1; i < points.length; i++) {
-            ctx.lineTo(points[i][0], points[i][1]);
-          }
-          // Bottom edge (offset down by thickness)
-          for (let i = points.length - 1; i >= 0; i--) {
-            ctx.lineTo(points[i][0], points[i][1] + ribbon.thickness);
-          }
-          ctx.closePath();
-          ctx.fillStyle = gradient;
-          ctx.fill();
-        });
-
-        // Draw stars
-        stars.forEach((star) => {
-          const twinkle = 0.3 + 0.7 * Math.abs(Math.sin(time * star.twinkleSpeed + star.phase));
-          ctx.beginPath();
-          ctx.arc(star.x * w, star.y * h, star.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${starR}, ${starG}, ${starB}, ${twinkle * starOpacity})`;
-          ctx.fill();
-        });
-
-        // Vignette overlay for depth
-        const vignette = ctx.createRadialGradient(w / 2, h / 2, h * 0.2, w / 2, h / 2, h * 0.9);
-        vignette.addColorStop(0, `rgba(${vigR}, ${vigG}, ${vigB}, 0)`);
-        vignette.addColorStop(1, `rgba(${vigR}, ${vigG}, ${vigB}, 0.4)`);
-        ctx.fillStyle = vignette;
-        ctx.fillRect(0, 0, w, h);
-
-        time += 0.016;
-        animationId = requestAnimationFrame(animate);
-      };
-
-      animate();
-    });
-
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(startId);
-      cancelAnimationFrame(animationId);
-    };
-  }, [theme]);
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.15) * 0.2 + 0.3;
+      meshRef.current.rotation.y += 0.003;
+      meshRef.current.rotation.z = Math.cos(state.clock.elapsedTime * 0.1) * 0.1;
+    }
+  });
 
   return (
-    <canvas
-      ref={canvasRef}
+    <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.6}>
+      <mesh ref={meshRef} position={[2.5, -1.5, 0]} scale={1.6}>
+        <torusKnotGeometry args={[1, 0.35, 128, 32, 2, 3]} />
+        <meshPhysicalMaterial
+          color={isLight ? '#9575e6' : '#7c5cc4'}
+          {...glassMaterial(isLight)}
+        />
+      </mesh>
+    </Float>
+  );
+};
+
+// Secondary object — top left
+const SecondaryObject = ({ isLight }: { isLight: boolean }) => {
+  const meshRef = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += 0.004;
+      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.2) * 0.3;
+      meshRef.current.rotation.z += 0.002;
+    }
+  });
+
+  return (
+    <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.5}>
+      <mesh ref={meshRef} position={[-4, 2.5, -1]} scale={0.9}>
+        <icosahedronGeometry args={[1, 1]} />
+        <meshPhysicalMaterial
+          color={isLight ? '#7c8cf6' : '#6d5cc4'}
+          {...glassMaterial(isLight)}
+        />
+      </mesh>
+    </Float>
+  );
+};
+
+const Stars = ({ count, isLight }: { count: number; isLight: boolean }) => {
+  const ref = useRef<THREE.Points>(null);
+
+  const positions = useMemo(() => {
+    const pos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      pos[i * 3] = (Math.random() - 0.5) * 30;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 30;
+      pos[i * 3 + 2] = -3 - Math.random() * 20;
+    }
+    return pos;
+  }, [count]);
+
+  useFrame((state) => {
+    if (ref.current) {
+      ref.current.rotation.y = state.clock.elapsedTime * 0.005;
+      ref.current.rotation.x = state.clock.elapsedTime * 0.003;
+    }
+  });
+
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial
+        size={isLight ? 0.035 : 0.05}
+        color={isLight ? '#7c3aed' : '#ffffff'}
+        transparent
+        opacity={isLight ? 0.35 : 0.7}
+        sizeAttenuation
+      />
+    </points>
+  );
+};
+
+const Scene = ({ isLight }: { isLight: boolean }) => (
+  <>
+    <color attach="background" args={[isLight ? '#fbfaff' : '#08070f']} />
+
+    <ambientLight intensity={isLight ? 0.4 : 0.2} />
+    <directionalLight position={[5, 5, 5]} intensity={isLight ? 1.2 : 0.8} color={isLight ? '#ffffff' : '#c4b5fd'} />
+    <directionalLight position={[-3, -2, 4]} intensity={0.3} color="#22d3ee" />
+    <pointLight position={[3, -1, 3]} intensity={isLight ? 0.5 : 0.8} color="#8b5cf6" />
+    <pointLight position={[-4, 2, 2]} intensity={0.3} color="#22d3ee" />
+
+    <MainObject isLight={isLight} />
+    <Stars count={isLight ? 80 : 250} isLight={isLight} />
+
+    <Suspense fallback={null}>
+      <Environment preset="night" />
+    </Suspense>
+
+    <fog attach="fog" args={[isLight ? '#fbfaff' : '#08070f', 8, 20]} />
+  </>
+);
+
+const HaloEffect: React.FC = () => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
+  return (
+    <div
       className="absolute inset-0 w-full h-full pointer-events-none"
       style={{ zIndex: 0 }}
       data-no-theme-transition
-    />
+    >
+      <Canvas
+        camera={{ position: [0, 0, 7], fov: 45 }}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: 'high-performance',
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: isLight ? 1.2 : 1.5,
+        }}
+        style={{ background: 'transparent' }}
+        dpr={[1, 1.5]}
+        frameloop="always"
+        performance={{ min: 0.5 }}
+      >
+        <Scene isLight={isLight} />
+      </Canvas>
+    </div>
   );
 };
 

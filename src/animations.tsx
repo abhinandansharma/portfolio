@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-// Scroll-triggered fade-in wrapper
 export const FadeIn = ({
   children,
   delay = 0,
@@ -14,10 +13,10 @@ export const FadeIn = ({
   className?: string;
 }) => {
   const offsets = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
+    up: { y: 24, x: 0 },
+    down: { y: -24, x: 0 },
+    left: { x: 24, y: 0 },
+    right: { x: -24, y: 0 },
     none: { x: 0, y: 0 },
   };
 
@@ -26,7 +25,7 @@ export const FadeIn = ({
       initial={{ opacity: 0, ...offsets[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.5, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={className}
     >
       {children}
@@ -34,7 +33,6 @@ export const FadeIn = ({
   );
 };
 
-// Stagger children animations
 export const StaggerContainer = ({
   children,
   className = '',
@@ -67,8 +65,8 @@ export const StaggerItem = ({
 }) => (
   <motion.div
     variants={{
-      hidden: { opacity: 0, y: 30 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+      hidden: { opacity: 0, y: 16 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } },
     }}
     className={className}
   >
@@ -76,7 +74,6 @@ export const StaggerItem = ({
   </motion.div>
 );
 
-// Animated letter-by-letter text
 export const AnimatedText = ({
   text,
   className = '',
@@ -94,7 +91,7 @@ export const AnimatedText = ({
       animate="visible"
       variants={{
         hidden: {},
-        visible: { transition: { staggerChildren: 0.04, delayChildren: delay } },
+        visible: { transition: { staggerChildren: 0.035, delayChildren: delay } },
       }}
       className={className}
       aria-label={text}
@@ -116,16 +113,15 @@ export const AnimatedText = ({
   );
 };
 
-// 3D tilt card on hover
 export const TiltCard = ({
   children,
   className = '',
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
   const rotateX = useSpring(0, { stiffness: 300, damping: 30 });
   const rotateY = useSpring(0, { stiffness: 300, damping: 30 });
 
@@ -133,11 +129,8 @@ export const TiltCard = ({
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const mouseX = e.clientX - centerX;
-    const mouseY = e.clientY - centerY;
-
-    rotateX.set((-mouseY / rect.height) * 10);
-    rotateY.set((mouseX / rect.width) * 10);
+    rotateX.set((-(e.clientY - centerY) / rect.height) * 6);
+    rotateY.set(((e.clientX - centerX) / rect.width) * 6);
   };
 
   const handleMouseLeave = () => {
@@ -149,7 +142,7 @@ export const TiltCard = ({
     <motion.div
       onMouseMove={handleMouse}
       onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', ...style }}
       className={className}
     >
       {children}
@@ -157,7 +150,6 @@ export const TiltCard = ({
   );
 };
 
-// Animated progress bar that fills on scroll
 export const AnimatedBar = ({
   width,
   className = '',
@@ -169,12 +161,12 @@ export const AnimatedBar = ({
     initial={{ width: 0 }}
     whileInView={{ width }}
     viewport={{ once: true }}
-    transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-    className={`bg-bar-fill h-2 rounded-full ${className}`}
+    transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+    className={`h-1 rounded-full ${className}`}
+    style={{ background: 'linear-gradient(90deg, var(--color-accent-600), var(--color-cyan-400))' }}
   />
 );
 
-// Cursor glow that follows mouse
 export const CursorGlow = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(false);
@@ -184,7 +176,6 @@ export const CursorGlow = () => {
       setPosition({ x: e.clientX, y: e.clientY });
       setVisible(true);
     };
-
     const handleLeave = () => setVisible(false);
 
     window.addEventListener('mousemove', handleMouse);
@@ -195,12 +186,11 @@ export const CursorGlow = () => {
     };
   }, []);
 
-  // Hide on touch devices
   if (typeof window !== 'undefined' && 'ontouchstart' in window) return null;
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
+      className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-500"
       style={{ opacity: visible ? 1 : 0 }}
     >
       <div
@@ -215,7 +205,6 @@ export const CursorGlow = () => {
   );
 };
 
-// Magnetic button effect
 export const MagneticButton = ({
   children,
   className = '',
@@ -228,16 +217,11 @@ export const MagneticButton = ({
 
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set((e.clientX - centerX) * 0.15);
-    y.set((e.clientY - centerY) * 0.15);
+    x.set((e.clientX - rect.left - rect.width / 2) * 0.12);
+    y.set((e.clientY - rect.top - rect.height / 2) * 0.12);
   };
 
-  const handleLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+  const handleLeave = () => { x.set(0); y.set(0); };
 
   return (
     <motion.div
