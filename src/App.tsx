@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import ExperienceSection from './ExperienceSection';
 import HaloEffect from './HaloEffect';
-import { FaReact, FaSass, FaGithub, FaAndroid, FaApple, FaFigma, FaTwitter, FaLinkedinIn, FaInstagram, FaTelegramPlane, FaMediumM, FaCodepen } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiAdobexd, SiGraphql, SiFirebase } from 'react-icons/si';
+import { FaReact, FaSass, FaGithub, FaPython, FaNodeJs, FaTwitter, FaLinkedinIn, FaInstagram, FaTelegramPlane, FaMediumM, FaCodepen } from 'react-icons/fa';
+import { SiNextdotjs, SiTypescript, SiGraphql, SiPostgresql, SiMongodb, SiFastapi, SiRedux, SiTailwindcss, SiGatsby } from 'react-icons/si';
 
 function App() {
   return (
@@ -33,11 +33,12 @@ function App() {
               Abhinandan Sharma
             </h1>
             <p className="text-xl md:text-2xl text-purple-300 mb-8">
-              Front-End Developer | Building Web Apps with Passion
+              Founding Principal Engineer | Platform Architecture & Data-Driven Systems
             </p>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Skilled in React and UI/UX design, I love to create intuitive, responsive apps that delight users.
-              I’m driven by challenges, open-source contributions, and a fascination with the stars.
+              Building scalable B2B platforms from zero to one. Strong frontend foundation in React and Next.js,
+              now leading architecture across backend systems, FastAPI, and PostgreSQL.
+              Experienced in defining technical foundations and engineering standards for founding teams.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -67,14 +68,14 @@ function App() {
             <div>
               <h3 className="text-2xl font-semibold text-purple-300 mb-6">Who I Am</h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I'm Abhinandan Sharma. I build web interfaces that are as functional as they are beautiful. 
-                With 4 years of experience in front-end development, I specialize in React, JavaScript, 
-                and turning complex problems into simple, user-friendly solutions.
-                Also an open-source contributor and have mentored developers through programs like Google Summer of Code.
+                I'm Abhinandan Sharma — a Founding Principal Engineer with a strong frontend background,
+                now focused on platform architecture and data-driven systems. I've gone from building pixel-perfect
+                React interfaces to defining the technical foundation of zero-to-one B2B platforms.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                When I'm not coding, I'm usually lost in a side project or trying to figure out how black holes work. I thrive on challenges, 
-                whether it's debugging a stubborn error or learning a new framework in a weekend.
+                I thrive at the intersection of product and engineering — partnering with founders on technical
+                tradeoffs, setting up engineering standards, and shipping scalable systems using FastAPI, PostgreSQL,
+                and modern frontend stacks. Also a Google Summer of Code alumnus and mentor under the Python Software Foundation.
               </p>
             </div>
             <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-purple-500/30">
@@ -82,27 +83,27 @@ function App() {
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Front-End Expert (4+ yrs mastering React, JS, CSS, HTML)
+                  Principal Engineer (Leading architecture at a B2B startup)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Full-Stack Capable (Built MERN Netflix clone)
+                  Zero-to-One Builder (Defining tech foundations from scratch)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Open-Source (EOS Design System contributor)
+                  Full-Stack (React, Next.js, FastAPI, PostgreSQL, MongoDB)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  GSoC Mentor & Alum (Mentored 2020, interned 2019)
+                  GSoC Intern & Mentor (Python Software Foundation)
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  Astronomy Buff (Passionate about space and tech)
+                  5+ Years Shipping Production Software
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                  BTech in Computer Science (Graduated in 2021)
+                  BTech in Computer Science (SMVDU, 3.5 GPA)
                 </li>
               </ul>
             </div>
@@ -119,10 +120,10 @@ function App() {
           <h2 className="text-4xl font-bold text-white text-center mb-16">Skills & Technologies</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-purple-500/30">
-              <h3 className="text-2xl font-semibold text-white mb-6">Front-end Development</h3>
+              <h3 className="text-2xl font-semibold text-white mb-6">Frontend</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><FaReact className="text-cyan-400" /> React.js</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaReact className="text-cyan-400" /> React</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '95%'}}></div>
                   </div>
@@ -136,11 +137,23 @@ function App() {
                 <div className="flex items-center justify-between">
                   <span className="text-gray-300 flex items-center gap-2"><SiTypescript className="text-blue-400" /> TypeScript</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
+                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300 flex items-center gap-2"><SiRedux className="text-purple-400" /> Redux</span>
+                  <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><FaSass className="text-pink-400" /> Sass/SCSS</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaSass className="text-pink-400" /> SCSS</span>
+                  <div className="w-24 bg-gray-700 rounded-full h-2">
+                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300 flex items-center gap-2"><SiTailwindcss className="text-cyan-300" /> Tailwind CSS</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
                   </div>
@@ -148,59 +161,59 @@ function App() {
               </div>
             </div>
             <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-purple-500/30">
-              <h3 className="text-2xl font-semibold text-white mb-6">Mobile Development</h3>
+              <h3 className="text-2xl font-semibold text-white mb-6">Backend</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><FaReact className="text-cyan-400" /> React Native</span>
-                  <div className="w-24 bg-gray-700 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><FaApple className="text-gray-200" /> iOS Development</span>
+                  <span className="text-gray-300 flex items-center gap-2"><SiFastapi className="text-green-400" /> FastAPI</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><FaAndroid className="text-green-400" /> Android SDK</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaPython className="text-yellow-300" /> Python</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '80%'}}></div>
+                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><FaFigma className="text-pink-400" /> Mobile UI/UX</span>
+                  <span className="text-gray-300 flex items-center gap-2"><FaNodeJs className="text-green-500" /> Node.js</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '95%'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-purple-500/30">
-              <h3 className="text-2xl font-semibold text-white mb-6">Other Technologies & Tools</h3>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><SiAdobexd className="text-pink-400" /> Adobe XD</span>
-                  <div className="w-24 bg-gray-700 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '90%'}}></div>
+                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-300 flex items-center gap-2"><SiGraphql className="text-pink-500" /> GraphQL</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
+                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '80%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><SiFirebase className="text-yellow-400" /> Firebase</span>
+                  <span className="text-gray-300 flex items-center gap-2"><SiPostgresql className="text-blue-300" /> PostgreSQL</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '80%'}}></div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-300 flex items-center gap-2"><FaGithub className="text-gray-300" /> Git/GitHub</span>
+                  <span className="text-gray-300 flex items-center gap-2"><SiMongodb className="text-green-400" /> MongoDB</span>
+                  <div className="w-24 bg-gray-700 rounded-full h-2">
+                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '80%'}}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-purple-500/30">
+              <h3 className="text-2xl font-semibold text-white mb-6">Tools & Platforms</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300 flex items-center gap-2"><FaGithub className="text-gray-300" /> Git / GitHub</span>
                   <div className="w-24 bg-gray-700 rounded-full h-2">
                     <div className="bg-purple-500 h-2 rounded-full" style={{width: '95%'}}></div>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300 flex items-center gap-2"><SiGatsby className="text-purple-400" /> Gatsby</span>
+                  <div className="w-24 bg-gray-700 rounded-full h-2">
+                    <div className="bg-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                 </div>
               </div>
@@ -326,7 +339,7 @@ function App() {
                 <p className="text-purple-300 text-sm">2020</p>
               </div>
               <p className="text-gray-300 text-sm mb-4">
-                A modern, feature-rich task management application built with jQuery, featuring dark mode, search, priorities, and real-time statistics.
+                Task management application with filtering, search, and dark mode support. Emphasized clean state management and reusable UI patterns.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">jQuery</span>
@@ -374,7 +387,7 @@ function App() {
                 <p className="text-purple-300 text-sm">2021</p>
               </div>
               <p className="text-gray-300 text-sm mb-4">
-                A full-featured Netflix clone built with React. Features include movie browsing, responsive design, and custom API integration. Deployed on Vercel.
+                Netflix-style web application built with React and the TMDB API. Focused on component composition, API-driven rendering, and responsive UI structure.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="px-2 py-1 bg-purple-600/30 text-purple-300 text-xs rounded">React</span>
@@ -515,7 +528,7 @@ function App() {
       <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-black/40 border-t border-white/10">
         <div className="max-w-7xl mx-auto justify-between flex flex-col sm:flex-row items-center gap-8">
           <p className="text-gray-400">
-            © 2025 Abhinandan Sharma. Built with React, TypeScript, and Tailwind CSS.
+            © 2026 Abhinandan Sharma. Built with React, TypeScript, and Tailwind CSS.
           </p>
           <div className="flex items-center justify-center gap-6 flex-col sm:flex-row">
               <iframe src="https://github.com/sponsors/abhinandansharma/button" title="Sponsor abhinandansharma" 
