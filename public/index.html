@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#0a0f0d" />
     <meta
       name="description"
-      content="Abhinandan Sharma - Senior Software Engineer Portfolio. Front-end developer specializing in React, React Native, and medical workflow applications."
+      content="Abhinandan Sharma - Founding Principal Engineer. Platform architecture, data-driven systems, React, Next.js, FastAPI."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
     <!--
@@ -24,7 +24,14 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Abhinandan Sharma - Software Engineer Portfolio</title>
+    <title>Abhinandan Sharma - Founding Principal Engineer</title>
+    <script>
+      // Anti-flash: apply saved theme before React renders
+      (function() {
+        var t = localStorage.getItem('theme');
+        if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

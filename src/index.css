@@ -2,8 +2,246 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ──────────────────────────────────────────────
+   Color tokens – single source of truth
+   ────────────────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --color-bg-primary: #0a0f0d;
+  --color-bg-gradient-from: #0a0f0d;
+  --color-bg-gradient-to: #0d1210;
+  --color-bg-surface: #080d0b;
+  --color-bg-surface-60: rgba(8, 13, 11, 0.6);
+  --color-bg-footer: rgba(6, 10, 8, 0.8);
+  --color-bg-nav: rgba(10, 15, 13, 0.8);
+
+  /* Accent scale */
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+  --color-accent-700: #047857;
+  --color-accent-800: #065f46;
+  --color-accent-900: #064e3b;
+  --color-accent-950: rgba(6, 78, 59, 0);
+
+  /* Accent with alpha */
+  --color-accent-500-30: rgba(16, 185, 129, 0.3);
+  --color-accent-500-20: rgba(16, 185, 129, 0.2);
+  --color-accent-500-06: rgba(16, 185, 129, 0.06);
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #d1d5db;
+  --color-text-muted: #9ca3af;
+  --color-text-accent: #6ee7b7;
+
+  /* Borders */
+  --color-border-card: rgba(16, 185, 129, 0.3);
+  --color-border-card-hover: rgba(52, 211, 153, 0.5);
+  --color-border-nav: rgba(6, 78, 59, 0.2);
+  --color-border-subtle: rgba(6, 78, 59, 0.3);
+  --color-border-accent: #059669;
+  --color-border-scroll-indicator: rgba(6, 78, 59, 0.4);
+
+  /* Buttons */
+  --color-btn-primary: #059669;
+  --color-btn-primary-hover: #065f46;
+  --color-shadow-btn: rgba(16, 185, 129, 0.3);
+  --color-shadow-btn-light: rgba(16, 185, 129, 0.2);
+
+  /* Tags */
+  --color-tag-bg: rgba(5, 150, 105, 0.3);
+  --color-tag-text: #6ee7b7;
+
+  /* Bars */
+  --color-bar-fill: #10b981;
+  --color-bar-track: #374151;
+
+  /* Cards */
+  --color-card-from: rgba(6, 78, 59, 0.3);
+  --color-card-to: rgba(15, 82, 72, 0.2);
+
+  /* Link buttons */
+  --color-link-bg: rgba(6, 78, 59, 0.2);
+  --color-link-bg-hover: rgba(5, 150, 105, 0.4);
+  --color-link-text: #6ee7b7;
+  --color-link-border: rgba(16, 185, 129, 0.3);
+  --color-link-border-hover: rgba(52, 211, 153, 0.6);
+
+  /* Canvas RGB triplets (for JS interpolation) */
+  --canvas-bg-r: 10;
+  --canvas-bg-g: 15;
+  --canvas-bg-b: 13;
+  --canvas-accent-r: 16;
+  --canvas-accent-g: 185;
+  --canvas-accent-b: 129;
+  --canvas-accent2-r: 52;
+  --canvas-accent2-g: 211;
+  --canvas-accent2-b: 153;
+  --canvas-star-r: 167;
+  --canvas-star-g: 243;
+  --canvas-star-b: 208;
+  --canvas-orb-mid-r: 6;
+  --canvas-orb-mid-g: 95;
+  --canvas-orb-mid-b: 70;
+  --canvas-orb-edge-r: 6;
+  --canvas-orb-edge-g: 78;
+  --canvas-orb-edge-b: 59;
+  --canvas-vignette-r: 10;
+  --canvas-vignette-g: 15;
+  --canvas-vignette-b: 13;
+  --canvas-orb-opacity: 0.06;
+  --canvas-orb-pulse: 0.03;
+  --canvas-ribbon-opacity-base: 0.04;
+  --canvas-star-opacity: 0.6;
+
+  /* Glow */
+  --color-glow: rgba(16, 185, 129, 0.06);
+
+  /* Selection */
+  --color-selection-bg: rgba(16, 185, 129, 0.3);
+  --color-selection-text: #ffffff;
+
+  /* Scrollbar */
+  --color-scrollbar-track: #0a0f0d;
+  --color-scrollbar-thumb: rgba(16, 185, 129, 0.3);
+  --color-scrollbar-thumb-hover: rgba(16, 185, 129, 0.5);
+
+  /* Social icons */
+  --color-social: #9ca3af;
+  --color-social-hover: #34d399;
+}
+
+/* ── Light theme ───────────────────────────── */
+
+[data-theme="light"] {
+  /* Backgrounds */
+  --color-bg-primary: #fafaf9;
+  --color-bg-gradient-from: #fafaf9;
+  --color-bg-gradient-to: #f5f5f4;
+  --color-bg-surface: #f5f5f4;
+  --color-bg-surface-60: rgba(245, 245, 244, 0.85);
+  --color-bg-footer: rgba(245, 245, 244, 0.9);
+  --color-bg-nav: rgba(250, 250, 249, 0.85);
+
+  /* Accent scale — darker for contrast on light bg */
+  --color-accent-400: #059669;
+  --color-accent-500: #047857;
+  --color-accent-600: #065f46;
+  --color-accent-700: #064e3b;
+  --color-accent-800: #022c22;
+  --color-accent-900: #022c22;
+  --color-accent-950: rgba(2, 44, 34, 0);
+
+  --color-accent-500-30: rgba(4, 120, 87, 0.15);
+  --color-accent-500-20: rgba(4, 120, 87, 0.1);
+  --color-accent-500-06: rgba(4, 120, 87, 0.04);
+
+  /* Text */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #6b7280;
+  --color-text-accent: #047857;
+
+  /* Borders */
+  --color-border-card: rgba(4, 120, 87, 0.2);
+  --color-border-card-hover: rgba(4, 120, 87, 0.4);
+  --color-border-nav: rgba(4, 120, 87, 0.1);
+  --color-border-subtle: rgba(4, 120, 87, 0.15);
+  --color-border-accent: #047857;
+  --color-border-scroll-indicator: rgba(4, 120, 87, 0.3);
+
+  /* Buttons */
+  --color-btn-primary: #047857;
+  --color-btn-primary-hover: #065f46;
+  --color-shadow-btn: rgba(4, 120, 87, 0.2);
+  --color-shadow-btn-light: rgba(4, 120, 87, 0.1);
+
+  /* Tags */
+  --color-tag-bg: rgba(4, 120, 87, 0.1);
+  --color-tag-text: #047857;
+
+  /* Bars */
+  --color-bar-fill: #059669;
+  --color-bar-track: #d1d5db;
+
+  /* Cards */
+  --color-card-from: rgba(4, 120, 87, 0.06);
+  --color-card-to: rgba(4, 120, 87, 0.03);
+
+  /* Link buttons */
+  --color-link-bg: rgba(4, 120, 87, 0.08);
+  --color-link-bg-hover: rgba(4, 120, 87, 0.2);
+  --color-link-text: #047857;
+  --color-link-border: rgba(4, 120, 87, 0.2);
+  --color-link-border-hover: rgba(4, 120, 87, 0.4);
+
+  /* Canvas RGB triplets */
+  --canvas-bg-r: 250;
+  --canvas-bg-g: 250;
+  --canvas-bg-b: 249;
+  --canvas-accent-r: 4;
+  --canvas-accent-g: 120;
+  --canvas-accent-b: 87;
+  --canvas-accent2-r: 5;
+  --canvas-accent2-g: 150;
+  --canvas-accent2-b: 105;
+  --canvas-star-r: 4;
+  --canvas-star-g: 120;
+  --canvas-star-b: 87;
+  --canvas-orb-mid-r: 16;
+  --canvas-orb-mid-g: 185;
+  --canvas-orb-mid-b: 129;
+  --canvas-orb-edge-r: 52;
+  --canvas-orb-edge-g: 211;
+  --canvas-orb-edge-b: 153;
+  --canvas-vignette-r: 250;
+  --canvas-vignette-g: 250;
+  --canvas-vignette-b: 249;
+  --canvas-orb-opacity: 0.04;
+  --canvas-orb-pulse: 0.02;
+  --canvas-ribbon-opacity-base: 0.03;
+  --canvas-star-opacity: 0.35;
+
+  /* Glow */
+  --color-glow: rgba(4, 120, 87, 0.04);
+
+  /* Selection */
+  --color-selection-bg: rgba(4, 120, 87, 0.2);
+  --color-selection-text: #1a1a1a;
+
+  /* Scrollbar */
+  --color-scrollbar-track: #fafaf9;
+  --color-scrollbar-thumb: rgba(4, 120, 87, 0.2);
+  --color-scrollbar-thumb-hover: rgba(4, 120, 87, 0.35);
+
+  /* Social icons */
+  --color-social: #6b7280;
+  --color-social-hover: #047857;
+}
+
+/* ── Global base styles ────────────────────── */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom styles can be added here if needed */
+body {
+  background-color: var(--color-bg-primary);
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition-property: background-color, color, border-color, fill, stroke;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+/* Opt out of transition for elements that animate on their own */
+canvas,
+[data-no-theme-transition] {
+  transition: none !important;
+}
