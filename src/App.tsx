@@ -79,7 +79,7 @@ function App() {
               className="text-secondary text-lg md:text-xl max-w-lg mb-10 leading-relaxed"
             >
               Building scalable B2B platforms from zero to one.
-              <span className="text-muted"> React, FastAPI, PostgreSQL.</span>
+              <span className="text-muted"> React, FastAPI, MongoDB.</span>
             </motion.p>
 
             <motion.div
@@ -145,7 +145,7 @@ function App() {
                 </p>
                 <p className="text-secondary text-lg leading-relaxed">
                   I thrive at the intersection of product and engineering — partnering with founders on technical
-                  tradeoffs, setting up engineering standards, and shipping scalable systems using FastAPI, PostgreSQL,
+                  tradeoffs, setting up engineering standards, and shipping scalable systems using FastAPI, MongoDB,
                   and modern frontend stacks.
                 </p>
                 <p className="text-muted">
@@ -159,7 +159,7 @@ function App() {
                   {[
                     { label: 'Role', value: 'Principal Engineer' },
                     { label: 'Focus', value: 'Zero-to-One Platforms' },
-                    { label: 'Stack', value: 'React, Next.js, FastAPI, PG' },
+                    { label: 'Stack', value: 'React, Next.js, FastAPI, MongoDB' },
                     { label: 'OSS', value: 'GSoC Intern & Mentor' },
                     { label: 'Experience', value: '5+ Years Production' },
                     { label: 'Education', value: 'BTech CS, 3.5 GPA' },
@@ -187,7 +187,7 @@ function App() {
           <FadeIn>
             <h2 className="text-4xl font-bold text-primary text-center mb-14">Skills</h2>
           </FadeIn>
-          <StaggerContainer className="grid md:grid-cols-3 gap-6" staggerDelay={0.12}>
+          <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.12}>
             {[
               {
                 title: 'Frontend',
@@ -195,47 +195,53 @@ function App() {
                   { name: 'React', level: 'Expert' },
                   { name: 'Next.js', level: 'Expert' },
                   { name: 'TypeScript', level: 'Expert' },
-                  { name: 'Redux', level: 'Advanced' },
-                  { name: 'SCSS', level: 'Expert' },
                   { name: 'Tailwind CSS', level: 'Expert' },
+                  { name: 'SCSS', level: 'Expert' },
+                  { name: 'Redux', level: 'Advanced' },
+                  { name: 'Three.js', level: 'Proficient' },
                 ],
               },
               {
-                title: 'Backend',
+                title: 'Backend & AI',
                 skills: [
-                  { name: 'FastAPI', level: 'Advanced' },
                   { name: 'Python', level: 'Advanced' },
+                  { name: 'FastAPI', level: 'Advanced' },
                   { name: 'Node.js', level: 'Advanced' },
-                  { name: 'GraphQL', level: 'Proficient' },
-                  { name: 'PostgreSQL', level: 'Proficient' },
                   { name: 'MongoDB', level: 'Proficient' },
+                  { name: 'GraphQL', level: 'Proficient' },
+                  { name: 'vLLM', level: 'Proficient' },
+                  { name: 'RAG', level: 'Proficient' },
                 ],
               },
               {
                 title: 'Tools & Platforms',
                 skills: [
                   { name: 'Git / GitHub', level: 'Expert' },
-                  { name: 'Gatsby', level: 'Advanced' },
+                  { name: 'AWS / EC2', level: 'Advanced' },
                   { name: 'Vercel', level: 'Advanced' },
+                  { name: 'Gatsby', level: 'Advanced' },
                   { name: 'Docker', level: 'Proficient' },
+                  { name: 'Figma', level: 'Advanced' },
                 ],
               },
             ].map((category) => (
               <StaggerItem key={category.title}>
-                <div className="rounded-2xl border border-[var(--color-border-card)] hover:border-[var(--color-border-card-hover)] bg-[var(--color-card-bg)] p-6 h-full transition-colors duration-300" style={{ backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
-                  <h3 className="text-lg font-bold text-primary mb-5">{category.title}</h3>
-                  <div className="space-y-0">
-                    {category.skills.map((skill, i) => (
-                      <div key={skill.name} className={`flex items-center justify-between py-3 ${i < category.skills.length - 1 ? 'border-b border-[var(--color-border-subtle)]' : ''}`}>
-                        <span className="text-secondary text-sm">{skill.name}</span>
-                        <span className={`text-xs font-medium px-2 py-0.5 rounded-md ${
+                <div className="rounded-2xl border border-[var(--color-border-card)] hover:border-[var(--color-border-card-hover)] bg-[var(--color-card-bg)] p-7 h-full transition-colors duration-300" style={{ backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
+                  <h3 className="text-lg font-bold text-primary mb-6">{category.title}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill.name}
+                        className={`px-3 py-1.5 text-sm rounded-lg border transition-colors duration-300 ${
                           skill.level === 'Expert'
-                            ? 'text-accent bg-[var(--color-accent-500-06)]'
+                            ? 'bg-[var(--color-accent-500-20)] text-accent border-[var(--color-border-card-hover)]'
                             : skill.level === 'Advanced'
-                            ? 'text-secondary bg-[var(--color-accent-500-06)]'
-                            : 'text-muted bg-[var(--color-accent-500-06)]'
-                        }`}>{skill.level}</span>
-                      </div>
+                            ? 'bg-[var(--color-accent-500-06)] text-secondary border-[var(--color-border-card)]'
+                            : 'bg-transparent text-muted border-[var(--color-border-subtle)]'
+                        }`}
+                      >
+                        {skill.name}
+                      </span>
                     ))}
                   </div>
                 </div>

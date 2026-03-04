@@ -66,11 +66,11 @@ const ExperienceSection = () => {
       description: 'First engineering hire, responsible for all technical decisions and platform architecture from day zero.',
       bullets: [
         'Leading the architecture and technical foundation of a zero-to-one B2B data management platform',
-        'Designing backend systems using FastAPI and PostgreSQL with a focus on security, scalability, and data integrity',
+        'Designing backend systems using FastAPI and MongoDB with a focus on security, scalability, and data integrity',
         'Defining engineering standards, repository structure, and development workflows for the founding team',
         'Partnering with the founder on product direction, technical tradeoffs, and long-term platform strategy',
       ],
-      tags: ['FastAPI', 'PostgreSQL', 'React', 'System Design', 'Architecture'],
+      tags: ['FastAPI', 'MongoDB', 'React', 'System Design', 'Architecture'],
     },
     {
       title: 'Software Engineer — Platform & Product',
