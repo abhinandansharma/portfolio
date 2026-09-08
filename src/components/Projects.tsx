@@ -25,7 +25,7 @@ export default function Projects() {
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 cards-grid">
           {projects.map((p, i) => (
-            <article key={p.title} className={`card card-click reveal flex flex-col ${open === i ? 'card-open' : ''}`} style={{ ['--i' as string]: i % 3 }} role="button" tabIndex={0} aria-haspopup="dialog" aria-expanded={open === i} aria-label={`${p.title}, details`} onClick={openCard(i)} onKeyDown={openCard(i)}>
+            <div key={p.title} className={`card card-click reveal flex flex-col ${open === i ? 'card-open' : ''}`} style={{ ['--i' as string]: i % 3 }} role="button" tabIndex={0} aria-haspopup="dialog" aria-expanded={open === i} aria-label={`${p.title}, details`} onClick={openCard(i)} onKeyDown={openCard(i)}>
               <Thumb art={p.art} index={i} red={p.red} image={p.image} figure={p.figure} />
               <div className="p-5 flex flex-col flex-1">
                 <div className="flex items-baseline justify-between gap-3">
@@ -43,7 +43,7 @@ export default function Projects() {
                   <span className="card-more">Details</span>
                 </div>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>
