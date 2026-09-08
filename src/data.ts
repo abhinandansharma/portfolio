@@ -217,12 +217,12 @@ export const projects: Project[] = [
   {
     title: 'Hacker News Clone',
     year: '2025',
-    desc: 'A Hacker News reader on the Next.js App Router: Top, New and Best feeds from the official API, typed end to end, with relative timestamps.',
+    desc: 'A Hacker News reader on the Next.js App Router: Top, New and Best feeds from the official API, 30 a page with working pagination, statically exported.',
     image: asset('hacker-news-clone'),
     art: 'list',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
     code: 'https://github.com/abhinandansharma/hacker-news-clone',
-    demo: 'https://hacker-news-clone-nine-mu.vercel.app',
+    demo: 'https://abhinandansharma.github.io/hacker-news-clone/',
   },
   {
     title: 'Netflix Clone',
@@ -231,7 +231,7 @@ export const projects: Project[] = [
     image: asset('netflix'),
     art: 'posters',
     tags: ['React', 'TMDB API', 'Vercel'],
-    demo: 'https://netflix-clone-ten-woad.vercel.app/',
+    demo: 'https://abhinandansharma.github.io/netflix-clone/',
     code: 'https://github.com/abhinandansharma/netflix-clone',
   },
   {
