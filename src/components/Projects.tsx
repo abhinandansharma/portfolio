@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionHeader from './SectionHeader';
-import Fluted from './Fluted';
+import Thumb from './Thumb';
 import { projects } from '../data';
 import { ArrowUpRight, GitHub } from './Icons';
 
@@ -17,7 +17,7 @@ export default function Projects() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((p, i) => (
             <article key={p.title} className="card reveal" style={{ ['--i' as string]: i % 3 }}>
-              <Fluted src={p.img} alt={`${p.title} screenshot`} fallback={p.title.charAt(0)} />
+              <Thumb art={p.art} index={i} red={p.red} image={p.image} figure={p.figure} />
               <div className="p-5">
                 <div className="flex items-baseline justify-between gap-3">
                   <h3 className="display text-[1.15rem] font-semibold">{p.title}</h3>
@@ -30,6 +30,7 @@ export default function Projects() {
                 <div className="flex items-center gap-5 mt-5">
                   {p.demo && <a href={p.demo} target="_blank" rel="noopener noreferrer" className="arrow">Live <ArrowUpRight /></a>}
                   {p.code && <a href={p.code} target="_blank" rel="noopener noreferrer" className="arrow muted"><GitHub /> Source</a>}
+                  {p.post && <a href={p.post} target="_blank" rel="noopener noreferrer" className="arrow muted">Write-up <ArrowUpRight /></a>}
                 </div>
               </div>
             </article>

@@ -59,6 +59,7 @@ async function main() {
       document.querySelectorAll('.cur-dot, .cur-ring').forEach((n) => n.removeAttribute('style'));
       document.querySelectorAll('.reveal[data-in]').forEach((n) => n.removeAttribute('data-in'));
       document.querySelectorAll('.stage-canvas, .pit canvas').forEach((n) => n.remove());
+      document.querySelectorAll('.thumb').forEach((n) => n.style.removeProperty('--img'));
       return '<!DOCTYPE html>' + document.documentElement.outerHTML;
     });
     // Inline the stylesheet: it is small, and it saves a render-blocking round trip.

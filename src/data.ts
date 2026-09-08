@@ -1,3 +1,5 @@
+import type { Art } from './components/Thumb';
+
 export const profile = {
   name: 'Abhinandan Sharma',
   role: 'Founding Principal Engineer',
@@ -169,14 +171,22 @@ export const skillGroups = [
   },
 ];
 
+const asset = (name: string) => `${process.env.PUBLIC_URL || ''}/projects/${name}.jpg`;
+
 export interface Project {
   title: string;
   year: string;
   desc: string;
   tags: string[];
-  img?: string;
+  art: Art;
+  red?: boolean;
+  /** 1280x720 artwork shown behind the glass, e.g. `${process.env.PUBLIC_URL}/projects/ambiently.jpg` */
+  image?: string;
+  /** transparent character cut-out standing at the right edge */
+  figure?: string;
   demo?: string;
   code?: string;
+  post?: string;
   featured?: boolean;
 }
 
@@ -184,24 +194,32 @@ export const projects: Project[] = [
   {
     title: 'Ambiently',
     year: '2025',
-    desc: 'A lightweight ambient sound engine for Next.js apps: layered loops, fades and volume control with zero dependencies.',
-    tags: ['Next.js', 'TypeScript', 'Web Audio'],
+    desc: 'Ambient sound for Next.js apps: a React hook with fade-in, fade-out and volume control, plus an engine that loops several background tracks at once. No dependencies beyond React.',
+    image: asset('ambiently'),
+    art: 'wave',
+    tags: ['React', 'Next.js', 'TypeScript'],
     code: 'https://github.com/abhinandansharma/ambiently',
     featured: true,
   },
   {
     title: 'Twitch Ad Blocker',
     year: '2025',
-    desc: 'Chrome extension that intercepts Twitch .m3u8 playlist requests and strips ad segments before the player sees them.',
-    tags: ['Chrome Extension', 'JavaScript'],
+    desc: 'Chrome extension that intercepts Twitch playlist requests and swaps in ad-free stream variants before the player loads them. No purple screens, no skipped segments.',
+    image: asset('twitch-ad-blocker'),
+    art: 'shield',
+    red: true,
+    tags: ['Chrome Extension', 'Manifest V3', 'JavaScript'],
     code: 'https://github.com/abhinandansharma/twitch-ad-blocker',
+    post: 'https://medium.com/@abhinandan0659/how-i-built-my-first-chrome-extension-a-twitch-ad-blocker-30cbad3c8b44',
     featured: true,
   },
   {
     title: 'Hacker News Clone',
     year: '2025',
-    desc: 'A fast reader for the Hacker News API with typed data fetching.',
-    tags: ['TypeScript', 'React'],
+    desc: 'A Hacker News reader on the Next.js App Router: Top, New and Best feeds from the official API, typed end to end, with relative timestamps.',
+    image: asset('hacker-news-clone'),
+    art: 'list',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
     code: 'https://github.com/abhinandansharma/hacker-news-clone',
     demo: 'https://hacker-news-clone-nine-mu.vercel.app',
   },
@@ -209,8 +227,9 @@ export const projects: Project[] = [
     title: 'Netflix Clone',
     year: '2021',
     desc: 'Netflix-style app built with React and the TMDB API. Component composition and responsive UI.',
+    image: asset('netflix'),
+    art: 'posters',
     tags: ['React', 'TMDB API', 'Vercel'],
-    img: 'https://user-images.githubusercontent.com/35263182/126314477-936b6acd-84d2-4c6b-b45a-c2678fd934b5.png',
     demo: 'https://netflix-clone-ten-woad.vercel.app/',
     code: 'https://github.com/abhinandansharma/netflix-clone',
   },
@@ -218,17 +237,20 @@ export const projects: Project[] = [
     title: 'Patatap',
     year: '2020',
     desc: 'Interactive sound and animation app. Press A-Z to play unique sounds with circle animations.',
+    image: asset('patatap'),
+    art: 'circles',
+    red: true,
     tags: ['Paper.js', 'Howler.js'],
-    img: 'https://github.com/user-attachments/assets/3891a115-2316-4ae6-8a11-fbea3a1892ad',
     demo: 'https://codepen.io/abhinandansharma/full/abNmPoJ',
     code: 'https://github.com/abhinandansharma/patatap',
   },
   {
     title: 'TaskMaster Pro',
-    year: '2020',
-    desc: 'Task management app with filtering, search, and dark mode support.',
-    tags: ['jQuery', 'CSS3'],
-    img: 'https://github.com/user-attachments/assets/a9b452db-5145-48a8-95f0-65ec965d8504',
+    year: '2025',
+    desc: 'A jQuery todo app taken further than it needed to go: priorities, live search with highlighting, progress stats, and a persistent dark mode.',
+    image: asset('taskmaster'),
+    art: 'checks',
+    tags: ['jQuery', 'HTML', 'CSS'],
     demo: 'https://task-master-pro-zeta.vercel.app/',
     code: 'https://github.com/abhinandansharma/taskMasterPro',
   },
@@ -236,26 +258,29 @@ export const projects: Project[] = [
     title: 'RGB Color Game',
     year: '2020',
     desc: 'Color guessing game with three difficulty modes based on RGB values.',
+    image: asset('rgb-color-game'),
+    art: 'grid',
     tags: ['JavaScript', 'CSS3'],
-    img: 'https://github.com/user-attachments/assets/cfec28b0-7e63-419d-92bb-f157e7630838',
     demo: 'https://codepen.io/abhinandansharma/full/VweErOz',
     code: 'https://github.com/abhinandansharma/ColorGame',
   },
   {
     title: 'Star Coin',
     year: '2018',
-    desc: 'Proof of Work cryptocurrency implementation exploring blockchain concepts.',
+    desc: 'A proof-of-work blockchain in Python with a Flask API: mine blocks, run three peer nodes, and watch consensus overwrite a tampered chain.',
+    image: asset('starcoin'),
+    art: 'chain',
     tags: ['Python', 'Flask', 'Blockchain'],
-    img: 'https://github.com/user-attachments/assets/5fcef9f9-f0a3-483d-a2b2-7dd0b844bfd5',
-    demo: 'https://starcoin-sandy.vercel.app',
     code: 'https://github.com/abhinandansharma/starcoin',
   },
   {
     title: 'Plate Recognition',
     year: '2019',
-    desc: 'Red light crossing detector using OpenCV and IoT sensors for traffic monitoring.',
+    desc: 'OpenCV pipeline that finds a car\'s number plate and reads the characters, the recognition half of a red-light violation project with Arduino sensors and a database.',
+    image: asset('plate-recognition'),
+    art: 'plate',
+    red: true,
     tags: ['OpenCV', 'Python', 'IoT'],
-    img: 'https://user-images.githubusercontent.com/35263182/98663114-ad8ce980-236e-11eb-98cc-e57ae1f07d94.PNG',
     code: 'https://github.com/abhinandansharma/number-plate-recognition',
   },
 ];

@@ -17,6 +17,7 @@ export default function Footer() {
           <p className="display text-[1.05rem] mt-3">Abhinandan<span className="red">.</span></p>
           <p className="jp text-[0.7rem] tracking-[0.3em] muted mt-1">アビナンダン・シャルマ</p>
           <p className="muted text-sm mt-4">&copy; {new Date().getFullYear()}. Built with React and Three.js.</p>
+          <p className="muted text-xs mt-3" style={{ maxWidth: '18rem' }}>Project imagery: public-domain photographs via Openverse, toned in-house.</p>
           <p className="muted text-sm mt-1">Lighthouse 100 <span aria-hidden="true">✱</span> 100 <span aria-hidden="true">✱</span> 100 <span aria-hidden="true">✱</span> 100, performance to SEO.</p>
         </div>
         {cols.map((c) => (
