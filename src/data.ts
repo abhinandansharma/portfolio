@@ -194,7 +194,7 @@ export const projects: Project[] = [
   {
     title: 'Ambiently',
     year: '2025',
-    desc: 'A tiny ambient sound engine for the web, published on npm. Layer loops with synthesised rain, wind and fire, fade everything with gain ramps, crossfade scenes, and let it handle autoplay. React and Next.js bindings, about 5 kB.',
+    desc: 'A 5 kB ambient sound engine for the web, on npm. Layered loops, synthesised rain, wind and fire, gain-ramp fades and crossfading scenes, with React and Next.js bindings.',
     image: asset('ambiently'),
     art: 'wave',
     tags: ['Web Audio', 'TypeScript', 'React', 'npm'],
@@ -237,12 +237,12 @@ export const projects: Project[] = [
   {
     title: 'Patatap',
     year: '2020',
-    desc: 'Interactive sound and animation app. Press A-Z to play unique sounds with circle animations.',
+    desc: 'Press any key from A to Z, or tap the screen, and get a sound and an animated circle. A Patatap study in Paper.js and Howler.js.',
     image: asset('patatap'),
     art: 'circles',
     red: true,
     tags: ['Paper.js', 'Howler.js'],
-    demo: 'https://codepen.io/abhinandansharma/full/abNmPoJ',
+    demo: 'https://abhinandansharma.github.io/patatap/',
     code: 'https://github.com/abhinandansharma/patatap',
   },
   {
@@ -252,7 +252,7 @@ export const projects: Project[] = [
     image: asset('taskmaster'),
     art: 'checks',
     tags: ['jQuery', 'HTML', 'CSS'],
-    demo: 'https://task-master-pro-zeta.vercel.app/',
+    demo: 'https://abhinandansharma.github.io/taskMasterPro/',
     code: 'https://github.com/abhinandansharma/taskMasterPro',
   },
   {
@@ -262,7 +262,7 @@ export const projects: Project[] = [
     image: asset('rgb-color-game'),
     art: 'grid',
     tags: ['JavaScript', 'CSS3'],
-    demo: 'https://codepen.io/abhinandansharma/full/VweErOz',
+    demo: 'https://abhinandansharma.github.io/ColorGame/',
     code: 'https://github.com/abhinandansharma/ColorGame',
   },
   {
