@@ -1,35 +1,30 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Theme = 'dark' | 'light';
+type Theme = 'ink' | 'paper';
 
-interface ThemeContextValue {
-  theme: Theme;
-  toggleTheme: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextValue>({
-  theme: 'dark',
-  toggleTheme: () => {},
-});
-
+const ThemeContext = createContext<{ theme: Theme; toggleTheme: () => void }>({ theme: 'ink', toggleTheme: () => {} });
 export const useTheme = () => useContext(ThemeContext);
 
+function initial(): Theme {
+  try {
+    return localStorage.getItem('theme') === 'paper' ? 'paper' : 'ink';
+  } catch {
+    return 'ink';
+  }
+}
+
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem('theme') as Theme | null;
-    return saved === 'light' ? 'light' : 'dark';
-  });
-
+  const [theme, setTheme] = useState<Theme>('ink');
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    setTheme(initial());
+  }, []);
+  useEffect(() => {
+    if (theme === 'paper') document.documentElement.setAttribute('data-theme', 'paper');
+    else document.documentElement.removeAttribute('data-theme');
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {}
   }, [theme]);
-
-  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  const toggleTheme = () => setTheme((t) => (t === 'ink' ? 'paper' : 'ink'));
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };

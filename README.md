@@ -1,111 +1,66 @@
-# Abhinandan Sharma - Personal Portfolio
+# abhinandansharma.github.io/portfolio
 
-A modern, responsive personal portfolio built with React, TypeScript, and Tailwind CSS.
+Personal site for Abhinandan Sharma, Founding Principal Engineer at Novyte.
 
-## 🚀 Features
+## Design
 
-- **Modern Design**: Clean, professional design with dark theme and purple accents
-- **Responsive**: Fully responsive design that works on all devices
-- **Fast Performance**: Built with React and optimized for speed
-- **SEO Friendly**: Proper meta tags and semantic HTML
-- **Accessible**: WCAG compliant design patterns
+Black, bone and one red, with Japanese accents. Condensed uppercase headlines in
+Clash Display with an italic Instrument Serif word, body copy in Satoshi, film
+grain over everything. Two themes: Ink (black) and Paper (bone), toggled in the nav.
 
-## 🛠️ Tech Stack
+Interactive pieces, all loaded after the first user interaction so first paint
+stays light:
 
-- **Frontend**: React 18 with TypeScript
-- **Styling**: Tailwind CSS
-- **Build Tool**: Create React App
-- **Deployment**: Ready for Vercel, Netlify, or GitHub Pages
+- A liquid chrome torus knot on a red diagonal, lit in red (React Three Fiber).
+- A physics pit where every skill is a ball you can drag, throw, and add to.
+- Fluted glass over every project image, which clears on hover.
+- Custom cursor, magnetic buttons, katakana scramble on the headline, and
+  scroll-driven parallax.
 
-## 📦 Installation
+## Performance
 
-1. Clone the repository:
+The build prerenders `index.html` with the full markup (`scripts/prerender.js`,
+using the locally installed Google Chrome through puppeteer-core), inlines the
+stylesheet, and loads the app bundle after the page's load event. React then
+hydrates the existing DOM. Fonts are self-hosted in `public/fonts`, subset to
+Latin, and start loading one frame after the page has painted with metric-matched
+fallbacks (Arial and Times with `size-adjust` and ascent/descent overrides), so
+the swap causes no layout shift and never delays the largest contentful paint.
+Three.js and the physics pit are separate chunks that never load during a
+Lighthouse run.
+
+If Chrome is not found at build time the prerender step is skipped and the site
+falls back to normal client rendering.
+
+## Stack
+
+- Create React App, React 19, TypeScript, Tailwind for layout utilities
+- `three` and `@react-three/fiber` / `drei` for the hero
+- No animation library: CSS animations plus one IntersectionObserver
+
+## Layout of `src`
+
+| Path | What it is |
+| --- | --- |
+| `data.ts` | All copy: roles, projects, skills, marquee, links |
+| `data/blogs.json` | Latest Medium posts, regenerated at build time |
+| `components/Hero.tsx` | Hero, red block, deferred 3D scene, marquee |
+| `components/Scene.tsx` | The chrome knot (lazy chunk) |
+| `components/Pit.tsx` | 2D physics for the skills section (lazy chunk) |
+| `components/Fluted.tsx` | Reeded-glass image treatment |
+| `components/*.tsx` | One file per section |
+| `hooks/` | Scroll reveal and magnetic buttons |
+
+## Scripts
+
 ```bash
-git clone <your-repo-url>
-cd portfolio
+npm start          # dev server at http://localhost:3000/portfolio
+npm run blogs      # refresh src/data/blogs.json from Medium's RSS feed
+npm run build      # blogs, build, then prerender index.html
+npm run deploy     # build and push to GitHub Pages
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+## Editing content
 
-3. Start the development server:
-```bash
-npm start
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-## 🎨 Customization
-
-### Personal Information
-My personal information is in `src/App.tsx`:
-- Name and title
-- About section content
-- Experience details
-- Skills and proficiency levels
-- Contact information
-
-### Styling
-The portfolio uses Tailwind CSS. You can customize:
-- Colors in `tailwind.config.js`
-- Typography and spacing
-- Component styles in the JSX
-
-### Adding Sections
-To add new sections:
-1. Add navigation link in the nav component
-2. Create a new section with proper ID
-3. Style using Tailwind classes
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
-
-### Netlify
-1. Build the project: `npm run build`
-2. Upload the `build` folder to Netlify
-3. Configure custom domain if needed
-
-### GitHub Pages
-1. Install gh-pages: `npm install --save-dev gh-pages`
-2. Add to package.json:
-```json
-"homepage": "https://yourusername.github.io/portfolio",
-"scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-}
-```
-3. Deploy: `npm run deploy`
-
-## 📱 Sections
-
-- **Hero**: Introduction and call-to-action
-- **About**: Personal story and quick facts
-- **Experience**: Work history and achievements
-- **Skills**: Technical skills with visual progress bars
-- **Contact**: Contact information and social links
-
-## 🎯 Performance
-
-- Lighthouse score: 95+ across all metrics
-- Optimized images and assets
-- Minimal bundle size
-- Fast loading times
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-Feel free to submit issues and enhancement requests!
-
----
-
-Built with ❤️ by Abhinandan Sharma
+Roles, projects, skills and links live in `src/data.ts`. The Novyte before/after
+table is `novyteTable` in the same file. Resume is `public/resume.pdf`.

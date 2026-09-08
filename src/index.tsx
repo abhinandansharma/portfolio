@@ -1,14 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { ThemeProvider } from './ThemeContext';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+const container = document.getElementById('root') as HTMLElement;
+const app = (
   <React.StrictMode>
     <ThemeProvider>
       <App />
@@ -16,7 +13,6 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// The build step prerenders the page into index.html, so the markup is already there on first load.
+if (container.hasChildNodes()) hydrateRoot(container, app);
+else createRoot(container).render(app);

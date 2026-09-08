@@ -1,0 +1,46 @@
+[
+  {
+    "title": "How I Built My First Chrome Extension — A Twitch Ad Blocker",
+    "url": "https://medium.com/@abhinandan0659/how-i-built-my-first-chrome-extension-a-twitch-ad-blocker-30cbad3c8b44",
+    "date": "2025-08-11",
+    "tags": [
+      "twitch",
+      "chrome-extension",
+      "coding"
+    ],
+    "summary": "…and how you can build your own, step-by-step."
+  },
+  {
+    "title": "Google Summer of Code. How I did it, and how you can do it too!",
+    "url": "https://medium.com/@abhinandan0659/google-summer-of-code-how-i-did-it-and-how-you-can-do-it-too-22e51201a1e0",
+    "date": "2020-08-31",
+    "tags": [
+      "guidelines",
+      "google-summer-of-code",
+      "google"
+    ],
+    "summary": "I keep getting DMs on LinkedIn, Twitter, Instagram about how to start with Google Summer of Code(GSoC)? when do I start contributing? how to select an organisation? as so on.…"
+  },
+  {
+    "title": "How I turned my Windows PC into a productivity machine for development (wsl + hyper + oh my zsh +…",
+    "url": "https://medium.com/@abhinandan0659/how-i-turned-my-windows-pc-into-a-productivity-machine-for-development-wsl-hyper-oh-my-zsh-79ee614afbd2",
+    "date": "2020-07-25",
+    "tags": [
+      "drácula",
+      "wsl",
+      "windows"
+    ],
+    "summary": "I have been using Linux for more than 3 years and I really liked working on it. From the day one I had to deal with all sort of errors, like grub errors, installation errors,…"
+  },
+  {
+    "title": "My First Ever Blog…!",
+    "url": "https://medium.com/@abhinandan0659/my-first-ever-blog-cfdde94af406",
+    "date": "2019-01-15",
+    "tags": [
+      "life",
+      "programmers-life",
+      "blogging"
+    ],
+    "summary": "Hi, everyone. I have been thinking of writing a blog for a very long time but I never started until now. I do write journals though from a very long time. Right now I don’t…"
+  }
+]

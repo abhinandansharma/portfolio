@@ -2,49 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#08070f" />
+    <title>Abhinandan Sharma — Founding Principal Engineer</title>
     <meta
       name="description"
-      content="Abhinandan Sharma - Founding Principal Engineer. Platform architecture, data-driven systems, React, Next.js, FastAPI."
+      content="Abhinandan Sharma is a Founding Principal Engineer at Novyte. He joins founders at zero and builds the platform that gets them to one: architecture, backend, product surface."
     />
+    <meta name="theme-color" content="#0b0b0b" />
+    <meta property="og:title" content="Abhinandan Sharma — Founding Principal Engineer" />
+    <meta property="og:description" content="I join founders at zero and build the platform that gets them to one." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://abhinandansharma.github.io/portfolio/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image" content="https://abhinandansharma.github.io/portfolio/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content="https://abhinandansharma.github.io/portfolio/og.png" />
+    <meta name="twitter:creator" content="@notjustadev" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Abhinandan Sharma - Founding Principal Engineer</title>
+    <style>
+      @font-face { font-family: 'Clash Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'); font-weight: 600 700; size-adjust: 100.05%; ascent-override: 88.96%; descent-override: 24.99%; line-gap-override: 9%; }
+      @font-face { font-family: 'Satoshi Fallback'; src: local('Arial'), local('ArialMT'), local('Helvetica'); size-adjust: 99.38%; ascent-override: 101.63%; descent-override: 24.15%; line-gap-override: 10.06%; }
+      @font-face { font-family: 'Serif Fallback'; src: local('Times New Roman Italic'), local('TimesNewRomanPS-ItalicMT'), local('Times Italic'); font-style: italic; size-adjust: 90.9%; ascent-override: 108.91%; descent-override: 34.1%; line-gap-override: 0%; }
+    </style>
     <script>
-      // Anti-flash: apply saved theme before React renders
-      (function() {
-        var t = localStorage.getItem('theme');
-        if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      // Web fonts start loading one frame after the page has painted with the metric-matched fallbacks,
+      // so the first paint never waits on them and there is no layout shift when they swap in.
+      (function () {
+        var css = "@font-face { font-family: 'Clash Display'; src: url('%PUBLIC_URL%/fonts/ClashDisplay-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }@font-face { font-family: 'Clash Display'; src: url('%PUBLIC_URL%/fonts/ClashDisplay-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }@font-face { font-family: 'Instrument Serif'; src: url('%PUBLIC_URL%/fonts/InstrumentSerif-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }@font-face { font-family: 'Satoshi'; src: url('%PUBLIC_URL%/fonts/Satoshi-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }@font-face { font-family: 'Satoshi'; src: url('%PUBLIC_URL%/fonts/Satoshi-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }@font-face { font-family: 'Satoshi'; src: url('%PUBLIC_URL%/fonts/Satoshi-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }";
+        function go() { var s = document.createElement('style'); s.textContent = css; document.head.appendChild(s); }
+        if (document.readyState === 'complete') go();
+        else addEventListener('load', function () { requestAnimationFrame(go); });
+      })();
+    </script>
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('theme') === 'paper') document.documentElement.setAttribute('data-theme', 'paper');
+        } catch (e) {}
       })();
     </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

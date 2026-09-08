@@ -1,6 +1,6 @@
 {
-  "short_name": "Abhinandan's Portfolio",
-  "name": "Abhinandan's Portfolio",
+  "short_name": "Abhinandan",
+  "name": "Abhinandan Sharma",
   "icons": [
     {
       "src": "favicon.png",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#08070f",
-  "background_color": "#08070f"
+  "theme_color": "#0b0b0b",
+  "background_color": "#0b0b0b"
 }
