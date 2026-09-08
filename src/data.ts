@@ -194,10 +194,11 @@ export const projects: Project[] = [
   {
     title: 'Ambiently',
     year: '2025',
-    desc: 'Ambient sound for Next.js apps: a React hook with fade-in, fade-out and volume control, plus an engine that loops several background tracks at once. No dependencies beyond React.',
+    desc: 'A tiny ambient sound engine for the web, published on npm. Layer loops with synthesised rain, wind and fire, fade everything with gain ramps, crossfade scenes, and let it handle autoplay. React and Next.js bindings, about 5 kB.',
     image: asset('ambiently'),
     art: 'wave',
-    tags: ['React', 'Next.js', 'TypeScript'],
+    tags: ['Web Audio', 'TypeScript', 'React', 'npm'],
+    demo: 'https://abhinandansharma.github.io/ambiently/',
     code: 'https://github.com/abhinandansharma/ambiently',
     featured: true,
   },
