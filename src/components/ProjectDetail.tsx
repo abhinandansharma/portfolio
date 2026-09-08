@@ -15,7 +15,7 @@ export default function ProjectDetail({ project, index, onClose }: { project: Pr
     const el = ref.current?.parentElement;
     if (el) {
       const r = el.getBoundingClientRect();
-      if (r.top < 80 || r.bottom > window.innerHeight) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (r.top < 80 || r.bottom > window.innerHeight) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     return () => document.removeEventListener('keydown', onKey);
   }, [onClose, project]);

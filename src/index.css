@@ -275,13 +275,12 @@ section[id] { scroll-margin-top: 4rem; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 6px; border: 2px solid var(--bg); }
 
-/* ── Project detail: the card itself expands to the full row, neighbours backfill ── */
-.cards-grid { grid-auto-flow: dense; }
+/* ── Project detail: the clicked card moves to the top as the wide card; the rest keep their order ── */
 .card-click { cursor: pointer; }
 .card-more { margin-left: auto; font-size: 0.8rem; font-weight: 600; color: var(--fg-3); transition: color 0.2s; }
 .card-more::after { content: ' +'; }
 .card-click:hover .card-more { color: var(--fg); }
-.card-x { grid-column: 1 / -1; cursor: default; border-color: var(--line-strong); }
+.card-x { grid-column: 1 / -1; order: -1; cursor: default; border-color: var(--line-strong); }
 .pd-inner { position: relative; display: grid; }
 @media (min-width: 768px) { .pd-inner { grid-template-columns: 2fr 3fr; } }
 .pd-close { position: absolute; top: 0.9rem; right: 0.9rem; z-index: 2; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); display: grid; place-items: center; cursor: pointer; transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
@@ -299,3 +298,4 @@ section[id] { scroll-margin-top: 4rem; }
 /* view transitions: cards slide to their new slots, the expanding one cross-fades */
 ::view-transition-group(*) { animation-duration: 0.5s; animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
 ::view-transition-old(*), ::view-transition-new(*) { animation-duration: 0.35s; }
+.card-x { scroll-margin-top: 6rem; }
