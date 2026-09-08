@@ -188,6 +188,10 @@ export interface Project {
   code?: string;
   post?: string;
   featured?: boolean;
+  /** Longer story shown in the detail view, one entry per paragraph */
+  about?: string[];
+  /** Short concrete points shown in the detail view */
+  highlights?: string[];
 }
 
 export const projects: Project[] = [
@@ -201,6 +205,16 @@ export const projects: Project[] = [
     demo: 'https://abhinandansharma.github.io/ambiently/',
     code: 'https://github.com/abhinandansharma/ambiently',
     featured: true,
+    about: [
+      'Started as a stub Next.js repo that only had a name. It is now a real package on npm: a Web Audio engine that layers looping recordings with synthesised ambiences, and never clicks when you change something because every change is a gain ramp on the audio clock.',
+      'The demo site ships fourteen sounds, eight of them CC0 field recordings cut to seamless loops, and lets you build a scene, then shows the five lines of code that would reproduce it.',
+    ],
+    highlights: [
+      'About 5 kB gzipped, zero dependencies, ESM and CJS builds with types',
+      'Synthesised rain, wind, fire and hum generated in the browser, no files',
+      'useAmbiently() React hook keeps layers in sync and re-renders on every event',
+      'Autoplay handled: the context wakes on the first gesture and starts what you asked for',
+    ],
   },
   {
     title: 'Twitch Ad Blocker',
@@ -213,6 +227,15 @@ export const projects: Project[] = [
     code: 'https://github.com/abhinandansharma/twitch-ad-blocker',
     post: 'https://medium.com/@abhinandan0659/how-i-built-my-first-chrome-extension-a-twitch-ad-blocker-30cbad3c8b44',
     featured: true,
+    about: [
+      'Twitch serves ads by splicing them into the HLS playlist, so most blockers either show a purple screen or lose a few seconds of stream. This extension rewrites the playlist request before the player sees it and asks for a variant that carries no ad segments.',
+      'Built on Manifest V3 with a declarative request pipeline, which meant learning what the new model does and does not allow. The write-up covers the parts that took the longest.',
+    ],
+    highlights: [
+      'No purple screens and no skipped segments',
+      'Manifest V3 only, no remote code',
+      'Around 200 lines of JavaScript, no build step',
+    ],
   },
   {
     title: 'Hacker News Reader',
@@ -223,9 +246,18 @@ export const projects: Project[] = [
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
     code: 'https://github.com/abhinandansharma/hacker-news-clone',
     demo: 'https://abhinandansharma.github.io/hacker-news-clone/',
+    about: [
+      'A Hacker News front end that is quicker to read than the original. It fetches from the official Firebase API on the client, thirty stories a page, with real pagination for each of the six feeds.',
+      'The look is paper: warm off-white, a serif for titles, a subtle grain, and a dark mode that remembers itself. Statically exported from the Next.js App Router and served from GitHub Pages.',
+    ],
+    highlights: [
+      'Top, New, Best, Ask, Show and Jobs with working pagination',
+      'Newsreader serif titles, paper and dark themes',
+      'Static export, client-side fetching, zero server',
+    ],
   },
   {
-    title: 'Reelhouse',
+    title: 'Marquee',
     year: '2021',
     desc: 'A Netflix-style browser on React and the TMDB API: banner, auto-scrolling rows, trailer modals, and a bundled snapshot when the API is unreachable.',
     image: asset('netflix'),
@@ -233,6 +265,15 @@ export const projects: Project[] = [
     tags: ['React', 'TMDB API', 'GitHub Pages'],
     demo: 'https://abhinandansharma.github.io/netflix-clone/',
     code: 'https://github.com/abhinandansharma/netflix-clone',
+    about: [
+      'A Netflix-style browser built in 2021 to learn React and API-driven UI. Rows of posters auto-scroll and pause on hover, the banner picks a featured title, and every card opens a modal with the trailer pulled from TMDB and played through YouTube.',
+      'Revisited in 2025: trailers are looked up per title by id, the API host falls back when one is blocked, and a bundled snapshot keeps the interface working when the API is unreachable.',
+    ],
+    highlights: [
+      'Trailers via TMDB videos and a privacy-friendly YouTube embed',
+      'Host fallback and a bundled data snapshot',
+      'Deployed with GitHub Actions, API key from a repository secret',
+    ],
   },
   {
     title: 'Patatap',
@@ -244,6 +285,15 @@ export const projects: Project[] = [
     tags: ['Paper.js', 'Howler.js'],
     demo: 'https://abhinandansharma.github.io/patatap/',
     code: 'https://github.com/abhinandansharma/patatap',
+    about: [
+      'A study of Patatap, the audiovisual instrument by Jono Brandel. Every key from A to Z, or a tap on a touch screen, plays a sound and draws an animated circle in Paper.js, with Howler.js handling audio.',
+      'One of the first things built while learning JavaScript animation, kept because it is still fun to mash the keyboard.',
+    ],
+    highlights: [
+      'Twenty-six sounds mapped to keys, plus touch',
+      'Paper.js circles that grow, fade and clean themselves up',
+      'Fits in a single HTML file',
+    ],
   },
   {
     title: 'TaskMaster Pro',
@@ -254,16 +304,34 @@ export const projects: Project[] = [
     tags: ['jQuery', 'HTML', 'CSS'],
     demo: 'https://abhinandansharma.github.io/taskMasterPro/',
     code: 'https://github.com/abhinandansharma/taskMasterPro',
+    about: [
+      'A jQuery to-do app that kept growing. Tasks have priorities, live search with highlighting, inline editing and progress stats, and everything survives a reload through localStorage.',
+      'The 2025 version adds a Pomodoro focus timer that links to a task and counts sessions against it, laid out as a dashboard of colour blocks with Geist Pixel numerals.',
+    ],
+    highlights: [
+      'Focus timer with 25/5/15 cycles, per-task session counts, and a chime',
+      'Filters with live counts, keyboard shortcuts, dark mode',
+      'Plain jQuery, no build step',
+    ],
   },
   {
     title: 'RGB Color Game',
     year: '2020',
-    desc: 'Color guessing game with three difficulty modes based on RGB values.',
+    desc: 'Pick the square that matches the RGB or hex value. Score, streaks, three lives a round, keyboard play, and a grid that grows with difficulty.',
     image: asset('rgb-color-game'),
     art: 'grid',
-    tags: ['JavaScript', 'CSS3'],
+    tags: ['JavaScript', 'CSS', 'Geist Pixel'],
     demo: 'https://abhinandansharma.github.io/ColorGame/',
     code: 'https://github.com/abhinandansharma/ColorGame',
+    about: [
+      'You are shown an RGB value and a grid of colours, and you pick the square that matches. Simple, slightly addictive, and a good way to develop a feel for how red, green and blue mix.',
+      'Rebuilt in 2025 with scoring, streaks, three lives a round, a hex mode, keyboard play and a proper dark interface.',
+    ],
+    highlights: [
+      'Easy, medium and hard grids of 3, 6 and 9 colours',
+      'RGB or hex mode, score and best streak saved locally',
+      'Keys 1 to 9 pick a square',
+    ],
   },
   {
     title: 'Star Coin',
@@ -273,6 +341,15 @@ export const projects: Project[] = [
     art: 'chain',
     tags: ['Python', 'Flask', 'Blockchain'],
     code: 'https://github.com/abhinandansharma/starcoin',
+    about: [
+      'A minimal proof-of-work blockchain written to understand how the pieces fit: blocks, hashing, nonce search, and a Flask API to mine and inspect the chain.',
+      'Three peer nodes can be started locally. Tamper with one chain and the consensus step replaces it with the longest valid chain from the others.',
+    ],
+    highlights: [
+      'Proof of work with adjustable difficulty',
+      'Flask endpoints to mine, add transactions and resolve conflicts',
+      'Multi-node consensus demo',
+    ],
   },
   {
     title: 'Plate Recognition',
@@ -283,6 +360,15 @@ export const projects: Project[] = [
     red: true,
     tags: ['OpenCV', 'Python', 'IoT'],
     code: 'https://github.com/abhinandansharma/number-plate-recognition',
+    about: [
+      'The recognition half of a red-light violation system: Arduino sensors detect a car crossing on red, a camera captures it, and this OpenCV pipeline locates the number plate and reads the characters.',
+      'Contour detection finds plate candidates, the crop is cleaned and thresholded, and the characters are segmented before recognition. Results land in a database with the timestamp.',
+    ],
+    highlights: [
+      'OpenCV contour search for plate candidates',
+      'Character segmentation and recognition',
+      'Arduino sensor trigger and database logging',
+    ],
   },
 ];
 
