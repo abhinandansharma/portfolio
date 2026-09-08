@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 
-/** Marks every `.reveal` element with data-in once it scrolls into view. A data attribute survives React re-renders, a class would not. */
+/**
+ * Marks every `.reveal` element with data-in once it scrolls into view. A data attribute survives React
+ * re-renders, a class would not. New `.reveal` nodes (a remount, hot reload, or content that arrives later)
+ * are picked up by a MutationObserver so nothing can stay hidden.
+ */
 export default function useReveal() {
   useEffect(() => {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
     if (!('IntersectionObserver' in window)) {
-      els.forEach((el) => el.setAttribute('data-in', ''));
+      document.querySelectorAll<HTMLElement>('.reveal').forEach((el) => el.setAttribute('data-in', ''));
       return;
     }
     const io = new IntersectionObserver(
@@ -19,7 +22,20 @@ export default function useReveal() {
       },
       { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
     );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    const watch = (root: ParentNode) => {
+      root.querySelectorAll<HTMLElement>('.reveal:not([data-in])').forEach((el) => io.observe(el));
+    };
+    watch(document);
+    const mo = new MutationObserver((records) => {
+      for (const r of records) {
+        r.addedNodes.forEach((n) => {
+          if (!(n instanceof HTMLElement)) return;
+          if (n.matches('.reveal') && !n.hasAttribute('data-in')) io.observe(n);
+          watch(n);
+        });
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+    return () => { io.disconnect(); mo.disconnect(); };
   }, []);
 }
