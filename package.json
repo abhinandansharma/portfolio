@@ -30,7 +30,7 @@
     "deploy": "gh-pages -d build",
     "blogs": "node scripts/fetch-blogs.js",
     "prebuild": "node scripts/fetch-blogs.js",
-    "postbuild": "node scripts/prerender.js"
+    "postbuild": "node scripts/prerender.js && node scripts/seo.js"
   },
   "eslintConfig": {
     "extends": [

@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="redblock" aria-hidden="true" />
         <div className="wrap w-full relative grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 hero-copy">
-            <p className="paren rise" style={{ ['--i' as string]: 0 }}>hello, I'm Abhinandan</p>
+            <p className="paren rise" style={{ ['--i' as string]: 0 }}>hello, I'm {profile.name}</p>
             <h1 className="display h-xl hero-title mt-5 rise-solid" style={{ ['--i' as string]: 1 }}>
               <span className="line"><Scramble text="First" active={showScene} delay={0} /> <span className="serif red">engineer</span></span>
               <span className="line"><Scramble text="in the room" active={showScene} delay={200} /><span className="red">.</span></span>
