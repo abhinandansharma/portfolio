@@ -217,7 +217,7 @@ export const projects: Project[] = [
   {
     title: 'Hacker News Clone',
     year: '2025',
-    desc: 'A Hacker News reader on the Next.js App Router: Top, New and Best feeds from the official API, 30 a page with working pagination, statically exported.',
+    desc: 'A paper-themed Hacker News reader on the Next.js App Router: Top, New, Best, Ask, Show and Jobs, 30 a page with working pagination, statically exported.',
     image: asset('hacker-news-clone'),
     art: 'list',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
@@ -227,7 +227,7 @@ export const projects: Project[] = [
   {
     title: 'Netflix Clone',
     year: '2021',
-    desc: 'Netflix-style app built with React and the TMDB API. Component composition and responsive UI.',
+    desc: 'Netflix-style browser on React and the TMDB API: banner, auto-scrolling rows, trailer modals, and a bundled snapshot when the API is unreachable.',
     image: asset('netflix'),
     art: 'posters',
     tags: ['React', 'TMDB API', 'Vercel'],
@@ -248,7 +248,7 @@ export const projects: Project[] = [
   {
     title: 'TaskMaster Pro',
     year: '2025',
-    desc: 'A jQuery todo app taken further than it needed to go: priorities, live search with highlighting, progress stats, and a persistent dark mode.',
+    desc: 'A jQuery todo app taken further than it needed to go: priorities, live search with highlighting, inline editing, progress stats, and tasks that survive a reload.',
     image: asset('taskmaster'),
     art: 'checks',
     tags: ['jQuery', 'HTML', 'CSS'],
