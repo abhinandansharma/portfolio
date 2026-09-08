@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { flushSync } from 'react-dom';
-import ProjectDetail from './ProjectDetail';
+import ProjectModal from './ProjectModal';
 import SectionHeader from './SectionHeader';
 import Thumb from './Thumb';
 import { projects } from '../data';
@@ -8,20 +7,12 @@ import { ArrowUpRight, GitHub } from './Icons';
 
 export default function Projects() {
   const [open, setOpen] = useState<number | null>(null);
-  /** Swap state inside a view transition when the browser has one, so cards morph instead of jumping. */
-  const transition = (update: () => void) => {
-    const doc = document as Document & { startViewTransition?: (cb: () => void) => void };
-    if (doc.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      doc.startViewTransition(() => flushSync(update));
-    } else update();
-  };
-  const close = useCallback(() => transition(() => setOpen(null)), []);
+  const close = useCallback(() => setOpen(null), []);
   const openCard = (i: number) => (e: React.MouseEvent | React.KeyboardEvent) => {
     if ((e.target as HTMLElement).closest('a')) return;
     if ('key' in e && e.key !== 'Enter' && e.key !== ' ') return;
-    if (open === i) return; // the expanded card closes from its own button or Escape
     e.preventDefault();
-    transition(() => setOpen(i));
+    setOpen(i);
   };
   return (
     <section id="projects" className="section" style={{ borderTop: '1px solid var(--line)' }}>
@@ -34,8 +25,7 @@ export default function Projects() {
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 cards-grid">
           {projects.map((p, i) => (
-            <article key={p.title} className={`card card-click reveal ${open === i ? 'card-x' : 'flex flex-col'}`} style={{ ['--i' as string]: i % 3, ['viewTransitionName' as string]: `card-${i}` }} role={open === i ? undefined : 'button'} tabIndex={open === i ? undefined : 0} aria-expanded={open === i} aria-label={open === i ? undefined : `${p.title}, details`} onClick={openCard(i)} onKeyDown={openCard(i)}>
-              {open === i ? <ProjectDetail project={p} index={i} onClose={close} /> : <>
+            <article key={p.title} className={`card card-click reveal flex flex-col ${open === i ? 'card-open' : ''}`} style={{ ['--i' as string]: i % 3 }} role="button" tabIndex={0} aria-haspopup="dialog" aria-expanded={open === i} aria-label={`${p.title}, details`} onClick={openCard(i)} onKeyDown={openCard(i)}>
               <Thumb art={p.art} index={i} red={p.red} image={p.image} figure={p.figure} />
               <div className="p-5 flex flex-col flex-1">
                 <div className="flex items-baseline justify-between gap-3">
@@ -53,11 +43,11 @@ export default function Projects() {
                   <span className="card-more">Details</span>
                 </div>
               </div>
-              </>}
             </article>
           ))}
         </div>
       </div>
+      {open !== null && <ProjectModal project={projects[open]} index={open} onClose={close} />}
     </section>
   );
 }
