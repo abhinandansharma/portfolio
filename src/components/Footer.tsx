@@ -1,5 +1,6 @@
 import React from 'react';
 import { profile } from '../data';
+import Mark from './Mark';
 
 const cols = [
   { title: 'Site', jp: 'サイト', links: [['Now', '#now'], ['Experience', '#experience'], ['Skills', '#skills'], ['Projects', '#projects'], ['Writing', '#writing']] },
@@ -12,7 +13,8 @@ export default function Footer() {
     <footer className="py-12" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="wrap grid md:grid-cols-12 gap-8">
         <div className="md:col-span-3">
-          <p className="display text-[1.05rem]">Abhinandan<span className="red">.</span></p>
+          <Mark size={44} />
+          <p className="display text-[1.05rem] mt-3">Abhinandan<span className="red">.</span></p>
           <p className="jp text-[0.7rem] tracking-[0.3em] muted mt-1">アビナンダン・シャルマ</p>
           <p className="muted text-sm mt-4">&copy; {new Date().getFullYear()}. Built with React and Three.js.</p>
           <p className="muted text-sm mt-1">Lighthouse 100 <span aria-hidden="true">✱</span> 100 <span aria-hidden="true">✱</span> 100 <span aria-hidden="true">✱</span> 100, performance to SEO.</p>

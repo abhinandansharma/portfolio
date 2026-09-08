@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '../ThemeContext';
+import Mark from './Mark';
 
 const links = [
   { en: 'Now', jp: '現在' },
@@ -23,7 +24,7 @@ export default function Nav() {
     <>
     <div className={`mini ${mini ? 'show' : ''}`} aria-hidden={!mini}>
       <div className="wrap mini-inner">
-        <a href="#top" className="display text-[0.95rem] leading-none" tabIndex={mini ? 0 : -1}>Abhinandan<span className="red">.</span></a>
+        <a href="#top" className="display text-[0.95rem] leading-none inline-flex items-center gap-2" tabIndex={mini ? 0 : -1}><Mark size={22} />Abhinandan<span className="red">.</span></a>
         <ul className="hidden md:flex items-center gap-5 m-0 p-0 list-none">
           {links.map((l) => (
             <li key={l.en}><a href={`#${l.en.toLowerCase()}`} className="nav-link" tabIndex={mini ? 0 : -1}>{l.en}</a></li>
@@ -34,9 +35,12 @@ export default function Nav() {
     </div>
     <header className="nav">
       <nav className="wrap py-4 grid grid-cols-2 md:grid-cols-3 items-start" aria-label="Primary">
-        <a href="#top" className="display text-[1.05rem] leading-none">
-          Abhinandan<span className="red">.</span>
-          <span className="jp block text-[0.6rem] font-normal tracking-[0.3em] mt-1 muted normal-case">アビナンダン</span>
+        <a href="#top" className="display text-[1.05rem] leading-none inline-flex items-start gap-3">
+          <Mark size={38} />
+          <span>
+            Abhinandan<span className="red">.</span>
+            <span className="jp block text-[0.6rem] font-normal tracking-[0.3em] mt-1 muted normal-case">アビナンダン</span>
+          </span>
         </a>
         <ul className="hidden md:flex flex-col gap-0.5 m-0 p-0 list-none">
           {links.map((l) => (
