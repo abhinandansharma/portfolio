@@ -257,7 +257,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: 'Marquee',
+    title: 'Flix',
     year: '2021',
     desc: 'A Netflix-style browser on React and the TMDB API: banner, auto-scrolling rows, trailer modals, and a bundled snapshot when the API is unreachable.',
     image: asset('netflix'),

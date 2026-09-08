@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { flushSync } from 'react-dom';
 import ProjectDetail from './ProjectDetail';
 import SectionHeader from './SectionHeader';
 import Thumb from './Thumb';
@@ -7,24 +8,20 @@ import { ArrowUpRight, GitHub } from './Icons';
 
 export default function Projects() {
   const [open, setOpen] = useState<number | null>(null);
-  const [cols, setCols] = useState(3);
-  const close = useCallback(() => setOpen(null), []);
-  useEffect(() => {
-    const md = window.matchMedia('(min-width: 768px)');
-    const lg = window.matchMedia('(min-width: 1024px)');
-    const update = () => setCols(lg.matches ? 3 : md.matches ? 2 : 1);
-    update();
-    md.addEventListener('change', update);
-    lg.addEventListener('change', update);
-    return () => { md.removeEventListener('change', update); lg.removeEventListener('change', update); };
-  }, []);
-  // The panel goes after the last card of the row that holds the open card, so no card moves.
-  const panelAfter = open === null ? -1 : Math.min(Math.ceil((open + 1) / cols) * cols - 1, projects.length - 1);
+  /** Swap state inside a view transition when the browser has one, so cards morph instead of jumping. */
+  const transition = (update: () => void) => {
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => void };
+    if (doc.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      doc.startViewTransition(() => flushSync(update));
+    } else update();
+  };
+  const close = useCallback(() => transition(() => setOpen(null)), []);
   const openCard = (i: number) => (e: React.MouseEvent | React.KeyboardEvent) => {
     if ((e.target as HTMLElement).closest('a')) return;
     if ('key' in e && e.key !== 'Enter' && e.key !== ' ') return;
+    if (open === i) return; // the expanded card closes from its own button or Escape
     e.preventDefault();
-    setOpen((cur) => (cur === i ? null : i));
+    transition(() => setOpen(i));
   };
   return (
     <section id="projects" className="section" style={{ borderTop: '1px solid var(--line)' }}>
@@ -35,10 +32,10 @@ export default function Projects() {
           title={<>Things built <span className="serif red">for fun</span></>}
           side={<p className="fg-2 text-sm max-w-xs md:ml-auto">Evenings and weekends. Each one exists to learn something or fix an annoyance.</p>}
         />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 cards-grid">
           {projects.map((p, i) => (
-            <React.Fragment key={p.title}>
-            <article className={`card card-click reveal flex flex-col ${open === i ? 'card-open' : ''}`} style={{ ['--i' as string]: i % 3 }} role="button" tabIndex={0} aria-expanded={open === i} aria-controls="project-detail" aria-label={`${p.title}, details`} onClick={openCard(i)} onKeyDown={openCard(i)}>
+            <article key={p.title} className={`card card-click reveal ${open === i ? 'card-x' : 'flex flex-col'}`} style={{ ['--i' as string]: i % 3, ['viewTransitionName' as string]: `card-${i}` }} role={open === i ? undefined : 'button'} tabIndex={open === i ? undefined : 0} aria-expanded={open === i} aria-label={open === i ? undefined : `${p.title}, details`} onClick={openCard(i)} onKeyDown={openCard(i)}>
+              {open === i ? <ProjectDetail project={p} index={i} onClose={close} /> : <>
               <Thumb art={p.art} index={i} red={p.red} image={p.image} figure={p.figure} />
               <div className="p-5 flex flex-col flex-1">
                 <div className="flex items-baseline justify-between gap-3">
@@ -53,12 +50,11 @@ export default function Projects() {
                   {p.demo && <a href={p.demo} target="_blank" rel="noopener noreferrer" className="arrow">Live <ArrowUpRight /></a>}
                   {p.code && <a href={p.code} target="_blank" rel="noopener noreferrer" className="arrow muted"><GitHub /> Source</a>}
                   {p.post && <a href={p.post} target="_blank" rel="noopener noreferrer" className="arrow muted">Write-up <ArrowUpRight /></a>}
-                  <span className="card-more">{open === i ? 'Close' : 'Details'}</span>
+                  <span className="card-more">Details</span>
                 </div>
               </div>
+              </>}
             </article>
-            {open !== null && i === panelAfter && <ProjectDetail project={projects[open]} index={open} onClose={close} />}
-            </React.Fragment>
           ))}
         </div>
       </div>

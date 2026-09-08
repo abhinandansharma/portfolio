@@ -3,8 +3,8 @@ import type { Project } from '../data';
 import { ArrowUpRight, GitHub } from './Icons';
 
 /**
- * Inline detail panel. It sits in the projects grid, spanning the full row directly under the card that
- * opened it, so the page never scrolls or shifts. Escape closes it.
+ * Contents of an expanded project card. The card itself grows to span the grid row (see Projects.tsx),
+ * so this only renders the media, the story, and the actions. Escape closes.
  */
 export default function ProjectDetail({ project, index, onClose }: { project: Project; index: number; onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -12,11 +12,10 @@ export default function ProjectDetail({ project, index, onClose }: { project: Pr
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
-    // Bring the panel into view only if it is cut off, and keep the rest of the page where it is.
-    const el = ref.current;
+    const el = ref.current?.parentElement;
     if (el) {
       const r = el.getBoundingClientRect();
-      if (r.bottom > window.innerHeight || r.top < 80) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (r.top < 80 || r.bottom > window.innerHeight) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     return () => document.removeEventListener('keydown', onKey);
   }, [onClose, project]);
@@ -24,16 +23,14 @@ export default function ProjectDetail({ project, index, onClose }: { project: Pr
   const num = String(index + 1).padStart(2, '0');
 
   return (
-    <div ref={ref} className="pd" role="region" aria-label={`${project.title} details`} id="project-detail">
-      <button className="pd-close" onClick={onClose} aria-label="Close details">
+    <div ref={ref} className="pd-inner" id="project-detail">
+      <button className="pd-close" onClick={(e) => { e.stopPropagation(); onClose(); }} aria-label="Close details">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
       </button>
-      {project.image && (
-        <div className="pd-media">
-          <img src={project.image} alt="" width={1280} height={720} />
-          <span className="paren pd-num">{num}</span>
-        </div>
-      )}
+      <div className="pd-media">
+        {project.image && <img src={project.image} alt="" width={1280} height={720} />}
+        <span className="paren pd-num">{num}</span>
+      </div>
       <div className="pd-body">
         <div className="flex items-baseline justify-between gap-4 pr-10">
           <h3 className="display pd-title">{project.title}</h3>

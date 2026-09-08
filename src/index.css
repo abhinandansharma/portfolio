@@ -275,16 +275,15 @@ section[id] { scroll-margin-top: 4rem; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 6px; border: 2px solid var(--bg); }
 
-/* ── Project detail (inline, spans the grid row) ── */
+/* ── Project detail: the card itself expands to the full row, neighbours backfill ── */
+.cards-grid { grid-auto-flow: dense; }
 .card-click { cursor: pointer; }
 .card-more { margin-left: auto; font-size: 0.8rem; font-weight: 600; color: var(--fg-3); transition: color 0.2s; }
 .card-more::after { content: ' +'; }
-.card-open .card-more::after { content: ' ×'; }
-.card-click:hover .card-more, .card-open .card-more { color: var(--fg); }
-.card-open { border-color: var(--red); }
-.pd { position: relative; grid-column: 1 / -1; display: grid; border: 1px solid var(--line-strong); background: var(--surface); overflow: hidden; animation: pd-rise 0.45s cubic-bezier(0.19, 1, 0.22, 1) both; }
-@media (min-width: 768px) { .pd { grid-template-columns: 2fr 3fr; } }
-@keyframes pd-rise { from { opacity: 0; transform: translateY(-10px); } }
+.card-click:hover .card-more { color: var(--fg); }
+.card-x { grid-column: 1 / -1; cursor: default; border-color: var(--line-strong); }
+.pd-inner { position: relative; display: grid; }
+@media (min-width: 768px) { .pd-inner { grid-template-columns: 2fr 3fr; } }
 .pd-close { position: absolute; top: 0.9rem; right: 0.9rem; z-index: 2; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); display: grid; place-items: center; cursor: pointer; transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
 .pd-close:hover { background: var(--red); border-color: var(--red); color: var(--on-red); }
 .pd-media { position: relative; min-height: 14rem; background: #000; }
@@ -297,4 +296,6 @@ section[id] { scroll-margin-top: 4rem; }
 .pd-list li { position: relative; padding-left: 1.1rem; }
 .pd-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 0.45rem; height: 0.45rem; background: var(--red); }
 .pd-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
-@media (prefers-reduced-motion: reduce) { .pd { animation: none; } }
+/* view transitions: cards slide to their new slots, the expanding one cross-fades */
+::view-transition-group(*) { animation-duration: 0.5s; animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
+::view-transition-old(*), ::view-transition-new(*) { animation-duration: 0.35s; }
