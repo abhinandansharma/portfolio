@@ -375,6 +375,6 @@ export const projects: Project[] = [
 export const novyteTable = [
   { task: 'Trials to 75% optimization', before: 'hundreds', after: '~5' },
   { task: 'Retrosynthesis analysis', before: 'weeks', after: '~90 s' },
-  { task: 'Next experiment suggestion', before: 'gut feel', after: '~8 s' },
+  { task: 'Next experiment suggestion', before: 'gut feeling', after: '~8 s' },
   { task: 'Campaign plan', before: 'days', after: '~4 min' },
 ];
